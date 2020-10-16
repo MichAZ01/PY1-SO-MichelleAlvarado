@@ -29,302 +29,277 @@ public class MiniPC extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainContainer = new javax.swing.JPanel();
-        header = new javax.swing.JPanel();
-        openFileButton = new javax.swing.JButton();
-        MiniPCOptions = new javax.swing.JTabbedPane();
-        programs = new javax.swing.JPanel();
+        mainContainerPanel = new keeptoo.KGradientPanel();
+        menuContainer = new javax.swing.JPanel();
+        loadProgramsButtonTab = new rojerusan.RSButtonIconI();
+        ExecuteButtonTab = new rojerusan.RSButtonIconI();
+        StatisticsButtonTab = new rojerusan.RSButtonIconI();
+        ConfigButtonTab = new rojerusan.RSButtonIconI();
+        myMiniPCIcon = new rojerusan.RSPanelImage();
+        sliderPanelContainer = new rojerusan.RSPanelsSlider();
+        panelLoadPrograms = new keeptoo.KGradientPanel();
+        openFilesButton = new javax.swing.JButton();
+        panelExecute = new keeptoo.KGradientPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        mainMemoryTable = new javax.swing.JTable();
-        label1 = new java.awt.Label();
-        label2 = new java.awt.Label();
+        jTable1 = new javax.swing.JTable();
+        panelStatistics = new keeptoo.KGradientPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        mainMemoryTable1 = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
-        label3 = new java.awt.Label();
-        label4 = new java.awt.Label();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        execution = new javax.swing.JPanel();
-        statistics = new javax.swing.JPanel();
+        jTree1 = new javax.swing.JTree();
+        panelConfig = new keeptoo.KGradientPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MiniPC OS");
         setMaximumSize(new java.awt.Dimension(1365, 735));
         setMinimumSize(new java.awt.Dimension(1365, 735));
 
-        mainContainer.setBackground(new java.awt.Color(208, 236, 240));
-        mainContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        mainContainerPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainContainerPanel.setkEndColor(new java.awt.Color(255, 255, 255));
+        mainContainerPanel.setkGradientFocus(0);
+        mainContainerPanel.setkStartColor(new java.awt.Color(255, 255, 255));
 
-        header.setBackground(new java.awt.Color(90, 129, 158));
-        header.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuContainer.setBackground(new java.awt.Color(90, 129, 158));
+        menuContainer.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        openFileButton.setBackground(new java.awt.Color(90, 129, 158));
-        openFileButton.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        openFileButton.setForeground(new java.awt.Color(255, 255, 255));
-        openFileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/open_folder.png"))); // NOI18N
-        openFileButton.setText("Abrir archivos");
-        openFileButton.setActionCommand("openFiles");
-        openFileButton.setBorder(null);
-        openFileButton.setBorderPainted(false);
-        openFileButton.setContentAreaFilled(false);
-        openFileButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        openFileButton.setFocusPainted(false);
-        openFileButton.setFocusable(false);
+        loadProgramsButtonTab.setBackground(new java.awt.Color(90, 129, 158));
+        loadProgramsButtonTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/upload.png"))); // NOI18N
+        loadProgramsButtonTab.setText("Carga de programas");
+        loadProgramsButtonTab.setActionCommand("loadPrograms");
+        loadProgramsButtonTab.setBorderPainted(false);
+        loadProgramsButtonTab.setColorHover(new java.awt.Color(108, 194, 189));
+        loadProgramsButtonTab.setFocusPainted(false);
+        loadProgramsButtonTab.setFocusable(false);
+        loadProgramsButtonTab.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
+        loadProgramsButtonTab.setName("loadProgramsButtonTab"); // NOI18N
+        loadProgramsButtonTab.setSelected(true);
 
-        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
-        header.setLayout(headerLayout);
-        headerLayout.setHorizontalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addComponent(openFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        ExecuteButtonTab.setBackground(new java.awt.Color(90, 129, 158));
+        ExecuteButtonTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/execute.png"))); // NOI18N
+        ExecuteButtonTab.setText("Ejecución                ");
+        ExecuteButtonTab.setActionCommand("openExecution");
+        ExecuteButtonTab.setBorderPainted(false);
+        ExecuteButtonTab.setColorHover(new java.awt.Color(108, 194, 189));
+        ExecuteButtonTab.setFocusPainted(false);
+        ExecuteButtonTab.setFocusable(false);
+        ExecuteButtonTab.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
+        ExecuteButtonTab.setName("ExecuteButtonTab"); // NOI18N
+
+        StatisticsButtonTab.setBackground(new java.awt.Color(90, 129, 158));
+        StatisticsButtonTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/statistics.png"))); // NOI18N
+        StatisticsButtonTab.setText("Estadísticas            ");
+        StatisticsButtonTab.setActionCommand("openStatistics");
+        StatisticsButtonTab.setBorderPainted(false);
+        StatisticsButtonTab.setColorHover(new java.awt.Color(108, 194, 189));
+        StatisticsButtonTab.setFocusPainted(false);
+        StatisticsButtonTab.setFocusable(false);
+        StatisticsButtonTab.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
+        StatisticsButtonTab.setName("StatisticsButtonTab"); // NOI18N
+
+        ConfigButtonTab.setBackground(new java.awt.Color(90, 129, 158));
+        ConfigButtonTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/settings.png"))); // NOI18N
+        ConfigButtonTab.setText("Configuraciones      ");
+        ConfigButtonTab.setActionCommand("OpenConfig");
+        ConfigButtonTab.setBorderPainted(false);
+        ConfigButtonTab.setColorHover(new java.awt.Color(108, 194, 189));
+        ConfigButtonTab.setFocusPainted(false);
+        ConfigButtonTab.setFocusable(false);
+        ConfigButtonTab.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
+        ConfigButtonTab.setName("ConfigButtonTab"); // NOI18N
+
+        myMiniPCIcon.setImagen(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/my-computer-icon.png"))); // NOI18N
+
+        javax.swing.GroupLayout myMiniPCIconLayout = new javax.swing.GroupLayout(myMiniPCIcon);
+        myMiniPCIcon.setLayout(myMiniPCIconLayout);
+        myMiniPCIconLayout.setHorizontalGroup(
+            myMiniPCIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
-        headerLayout.setVerticalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(openFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-        );
-
-        MiniPCOptions.setBackground(new java.awt.Color(208, 236, 240));
-        MiniPCOptions.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        MiniPCOptions.setFocusable(false);
-        MiniPCOptions.setFont(new java.awt.Font("Bodoni MT", 0, 17)); // NOI18N
-
-        programs.setBackground(new java.awt.Color(208, 236, 240));
-
-        mainMemoryTable.setBackground(new java.awt.Color(255, 246, 223));
-        mainMemoryTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Posición", "Código ASM", "Código Binario"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        mainMemoryTable.setToolTipText("");
-        mainMemoryTable.setRowHeight(22);
-        jScrollPane1.setViewportView(mainMemoryTable);
-        mainMemoryTable.getColumnModel().getColumn(0).setPreferredWidth(30);
-        mainMemoryTable.getColumnModel().getColumn(1).setPreferredWidth(125);
-        mainMemoryTable.getColumnModel().getColumn(2).setPreferredWidth(125);
-
-        label1.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        label1.setText("Memoria principal");
-
-        label2.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        label2.setText("Memoria virtual");
-
-        mainMemoryTable1.setBackground(new java.awt.Color(255, 246, 223));
-        mainMemoryTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Posición", "Código ASM", "Código Binario"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        mainMemoryTable1.setToolTipText("");
-        mainMemoryTable1.setRowHeight(22);
-        jScrollPane2.setViewportView(mainMemoryTable1);
-        mainMemoryTable.getColumnModel().getColumn(0).setPreferredWidth(30);
-        mainMemoryTable.getColumnModel().getColumn(1).setPreferredWidth(125);
-        mainMemoryTable.getColumnModel().getColumn(2).setPreferredWidth(125);
-
-        jPanel2.setBackground(new java.awt.Color(255, 246, 223));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 202, Short.MAX_VALUE)
+        myMiniPCIconLayout.setVerticalGroup(
+            myMiniPCIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
 
-        jScrollPane5.setViewportView(jPanel2);
-
-        label3.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        label3.setText("Programas en espera de memoria");
-
-        label4.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        label4.setText("BCP de programas cargados");
-
-        jPanel1.setBackground(new java.awt.Color(255, 246, 223));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+        javax.swing.GroupLayout menuContainerLayout = new javax.swing.GroupLayout(menuContainer);
+        menuContainer.setLayout(menuContainerLayout);
+        menuContainerLayout.setHorizontalGroup(
+            menuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loadProgramsButtonTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ExecuteButtonTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(StatisticsButtonTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ConfigButtonTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuContainerLayout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(myMiniPCIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-        );
-
-        jScrollPane3.setViewportView(jPanel1);
-
-        javax.swing.GroupLayout programsLayout = new javax.swing.GroupLayout(programs);
-        programs.setLayout(programsLayout);
-        programsLayout.setHorizontalGroup(
-            programsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(programsLayout.createSequentialGroup()
-                .addGroup(programsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(programsLayout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addGroup(programsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane5)
-                            .addComponent(jScrollPane1)
-                            .addGroup(programsLayout.createSequentialGroup()
-                                .addGap(136, 136, 136)
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(programsLayout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(programsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(programsLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(230, 230, 230))
-                    .addGroup(programsLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(programsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addGroup(programsLayout.createSequentialGroup()
-                                .addGap(136, 136, 136)
-                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3))
-                        .addContainerGap(116, Short.MAX_VALUE))))
-        );
-        programsLayout.setVerticalGroup(
-            programsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, programsLayout.createSequentialGroup()
-                .addGroup(programsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, programsLayout.createSequentialGroup()
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(programsLayout.createSequentialGroup()
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addGroup(programsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(programsLayout.createSequentialGroup()
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(programsLayout.createSequentialGroup()
-                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane3)))
+        menuContainerLayout.setVerticalGroup(
+            menuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(myMiniPCIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(loadProgramsButtonTab, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ExecuteButtonTab, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(StatisticsButtonTab, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ConfigButtonTab, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        MiniPCOptions.addTab("Programas cargados  ", new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/open_folder.png")), programs); // NOI18N
+        loadProgramsButtonTab.getAccessibleContext().setAccessibleName("loadProgramsButtonTab");
+        ExecuteButtonTab.getAccessibleContext().setAccessibleName("ExecuteButtonTab");
+        ExecuteButtonTab.getAccessibleContext().setAccessibleDescription("");
+        StatisticsButtonTab.getAccessibleContext().setAccessibleName("StatisticsButtonTab");
+        ConfigButtonTab.getAccessibleContext().setAccessibleName("ConfigButtonTab");
 
-        execution.setBackground(new java.awt.Color(208, 236, 240));
+        sliderPanelContainer.setBackground(new java.awt.Color(255, 255, 255));
+        sliderPanelContainer.setName("sliderPanelContainer"); // NOI18N
 
-        javax.swing.GroupLayout executionLayout = new javax.swing.GroupLayout(execution);
-        execution.setLayout(executionLayout);
-        executionLayout.setHorizontalGroup(
-            executionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1139, Short.MAX_VALUE)
+        panelLoadPrograms.setkEndColor(new java.awt.Color(108, 194, 189));
+        panelLoadPrograms.setkGradientFocus(200);
+        panelLoadPrograms.setkStartColor(new java.awt.Color(255, 193, 167));
+        panelLoadPrograms.setName("panelLoadPrograms"); // NOI18N
+
+        openFilesButton.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        openFilesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/open_folder.png"))); // NOI18N
+        openFilesButton.setText("Abrir archivos");
+        openFilesButton.setActionCommand("openFiles");
+        openFilesButton.setBorderPainted(false);
+        openFilesButton.setContentAreaFilled(false);
+        openFilesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        openFilesButton.setFocusPainted(false);
+        openFilesButton.setFocusable(false);
+        openFilesButton.setName("openFilesButton"); // NOI18N
+
+        javax.swing.GroupLayout panelLoadProgramsLayout = new javax.swing.GroupLayout(panelLoadPrograms);
+        panelLoadPrograms.setLayout(panelLoadProgramsLayout);
+        panelLoadProgramsLayout.setHorizontalGroup(
+            panelLoadProgramsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLoadProgramsLayout.createSequentialGroup()
+                .addGap(431, 431, 431)
+                .addComponent(openFilesButton)
+                .addContainerGap(487, Short.MAX_VALUE))
         );
-        executionLayout.setVerticalGroup(
-            executionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 652, Short.MAX_VALUE)
+        panelLoadProgramsLayout.setVerticalGroup(
+            panelLoadProgramsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLoadProgramsLayout.createSequentialGroup()
+                .addGap(276, 276, 276)
+                .addComponent(openFilesButton)
+                .addContainerGap(431, Short.MAX_VALUE))
         );
 
-        MiniPCOptions.addTab("Procesos en ejecución", new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/open_folder.png")), execution); // NOI18N
+        openFilesButton.getAccessibleContext().setAccessibleName("openFilesButton");
 
-        statistics.setBackground(new java.awt.Color(208, 236, 240));
+        sliderPanelContainer.add(panelLoadPrograms, "card2");
+        panelLoadPrograms.getAccessibleContext().setAccessibleName("");
 
-        javax.swing.GroupLayout statisticsLayout = new javax.swing.GroupLayout(statistics);
-        statistics.setLayout(statisticsLayout);
-        statisticsLayout.setHorizontalGroup(
-            statisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1139, Short.MAX_VALUE)
+        panelExecute.setkEndColor(new java.awt.Color(108, 194, 189));
+        panelExecute.setkGradientFocus(200);
+        panelExecute.setkStartColor(new java.awt.Color(255, 193, 167));
+        panelExecute.setName("panelExecute"); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout panelExecuteLayout = new javax.swing.GroupLayout(panelExecute);
+        panelExecute.setLayout(panelExecuteLayout);
+        panelExecuteLayout.setHorizontalGroup(
+            panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExecuteLayout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(414, Short.MAX_VALUE))
         );
-        statisticsLayout.setVerticalGroup(
-            statisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 652, Short.MAX_VALUE)
+        panelExecuteLayout.setVerticalGroup(
+            panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExecuteLayout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
-        MiniPCOptions.addTab("Estadísticas                ", new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/open_folder.png")), statistics); // NOI18N
+        sliderPanelContainer.add(panelExecute, "card3");
+        panelExecute.getAccessibleContext().setAccessibleName("");
 
-        javax.swing.GroupLayout mainContainerLayout = new javax.swing.GroupLayout(mainContainer);
-        mainContainer.setLayout(mainContainerLayout);
-        mainContainerLayout.setHorizontalGroup(
-            mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(MiniPCOptions)
+        panelStatistics.setkEndColor(new java.awt.Color(108, 194, 189));
+        panelStatistics.setkGradientFocus(200);
+        panelStatistics.setkStartColor(new java.awt.Color(255, 193, 167));
+
+        jScrollPane2.setViewportView(jTree1);
+
+        javax.swing.GroupLayout panelStatisticsLayout = new javax.swing.GroupLayout(panelStatistics);
+        panelStatistics.setLayout(panelStatisticsLayout);
+        panelStatisticsLayout.setHorizontalGroup(
+            panelStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelStatisticsLayout.createSequentialGroup()
+                .addContainerGap(637, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(393, 393, 393))
         );
-        mainContainerLayout.setVerticalGroup(
-            mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainContainerLayout.createSequentialGroup()
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panelStatisticsLayout.setVerticalGroup(
+            panelStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelStatisticsLayout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(303, Short.MAX_VALUE))
+        );
+
+        sliderPanelContainer.add(panelStatistics, "card4");
+
+        panelConfig.setkEndColor(new java.awt.Color(108, 194, 189));
+        panelConfig.setkGradientFocus(200);
+        panelConfig.setkStartColor(new java.awt.Color(255, 193, 167));
+
+        javax.swing.GroupLayout panelConfigLayout = new javax.swing.GroupLayout(panelConfig);
+        panelConfig.setLayout(panelConfigLayout);
+        panelConfigLayout.setHorizontalGroup(
+            panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1109, Short.MAX_VALUE)
+        );
+        panelConfigLayout.setVerticalGroup(
+            panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 765, Short.MAX_VALUE)
+        );
+
+        sliderPanelContainer.add(panelConfig, "card5");
+
+        javax.swing.GroupLayout mainContainerPanelLayout = new javax.swing.GroupLayout(mainContainerPanel);
+        mainContainerPanel.setLayout(mainContainerPanelLayout);
+        mainContainerPanelLayout.setHorizontalGroup(
+            mainContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainContainerPanelLayout.createSequentialGroup()
+                .addComponent(menuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MiniPCOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(sliderPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        mainContainerPanelLayout.setVerticalGroup(
+            mainContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menuContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(sliderPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        MiniPCOptions.setEnabledAt(1, true);
-        MiniPCOptions.setEnabledAt(2, true);
+        sliderPanelContainer.getAccessibleContext().setAccessibleName("sliderPanelContainer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainContainerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainContainerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleName("MiniPC SO");
@@ -368,24 +343,22 @@ public class MiniPC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTabbedPane MiniPCOptions;
-    private javax.swing.JPanel execution;
-    private javax.swing.JPanel header;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    public rojerusan.RSButtonIconI ConfigButtonTab;
+    public rojerusan.RSButtonIconI ExecuteButtonTab;
+    public rojerusan.RSButtonIconI StatisticsButtonTab;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private java.awt.Label label1;
-    private java.awt.Label label2;
-    private java.awt.Label label3;
-    private java.awt.Label label4;
-    private javax.swing.JPanel mainContainer;
-    public javax.swing.JTable mainMemoryTable;
-    public javax.swing.JTable mainMemoryTable1;
-    public javax.swing.JButton openFileButton;
-    private javax.swing.JPanel programs;
-    private javax.swing.JPanel statistics;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTree jTree1;
+    public rojerusan.RSButtonIconI loadProgramsButtonTab;
+    private keeptoo.KGradientPanel mainContainerPanel;
+    private javax.swing.JPanel menuContainer;
+    private rojerusan.RSPanelImage myMiniPCIcon;
+    public javax.swing.JButton openFilesButton;
+    public keeptoo.KGradientPanel panelConfig;
+    public keeptoo.KGradientPanel panelExecute;
+    public keeptoo.KGradientPanel panelLoadPrograms;
+    public keeptoo.KGradientPanel panelStatistics;
+    private rojerusan.RSPanelsSlider sliderPanelContainer;
     // End of variables declaration//GEN-END:variables
 }

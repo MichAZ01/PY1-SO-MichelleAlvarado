@@ -19,8 +19,11 @@ import javax.swing.JFileChooser;
 public class Controller implements ActionListener{
     private MiniPC view;
     public File[] selectedFiles = null;
+    public rojerusan.RSButtonIconI[] viewTabButtons;
+    
     public Controller(){
-        
+        rojerusan.RSButtonIconI ConfigButtonTab = new rojerusan.RSButtonIconI();
+        this.viewTabButtons = new rojerusan.RSButtonIcon[4]{ConfigButtonTab};
     }
     
     public void showView(){
@@ -49,12 +52,18 @@ public class Controller implements ActionListener{
 
         this.view = new MiniPC();
         MiniPC viewP = this.view;
-        this.view.openFileButton.addActionListener(this);
+        this.view.openFilesButton.addActionListener(this);
+        this.view.loadProgramsButtonTab.addActionListener(this);
+        this.view.ExecuteButtonTab.addActionListener(this);
+        this.view.StatisticsButtonTab.addActionListener(this);
+        this.view.ConfigButtonTab.addActionListener(this);
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 viewP.setVisible(true);
+                viewP.setResizable(false);
+                viewP.setLocationRelativeTo(viewP);
             }
         });
     }
@@ -68,6 +77,14 @@ public class Controller implements ActionListener{
         switch(ae.getActionCommand()){
             case "openFiles":
                 this.OpenFolderButtonActionPerformed(view);
+                break;
+            case "loadPrograms":
+                break;
+            case "openExecution":
+                break;
+            case "openStatistics":
+                break;
+            case "OpenConfig":
                 break;
             default:
                 break;
