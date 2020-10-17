@@ -235,6 +235,7 @@ public class MiniPC extends javax.swing.JFrame {
         panelStatistics.setkEndColor(new java.awt.Color(108, 194, 189));
         panelStatistics.setkGradientFocus(200);
         panelStatistics.setkStartColor(new java.awt.Color(255, 193, 167));
+        panelStatistics.setName("panelStatistics"); // NOI18N
 
         jScrollPane2.setViewportView(jTree1);
 
@@ -256,10 +257,12 @@ public class MiniPC extends javax.swing.JFrame {
         );
 
         sliderPanelContainer.add(panelStatistics, "card4");
+        panelStatistics.getAccessibleContext().setAccessibleName("panelStatistics");
 
         panelConfig.setkEndColor(new java.awt.Color(108, 194, 189));
         panelConfig.setkGradientFocus(200);
         panelConfig.setkStartColor(new java.awt.Color(255, 193, 167));
+        panelConfig.setName("panelConfig"); // NOI18N
 
         javax.swing.GroupLayout panelConfigLayout = new javax.swing.GroupLayout(panelConfig);
         panelConfig.setLayout(panelConfigLayout);
@@ -273,6 +276,7 @@ public class MiniPC extends javax.swing.JFrame {
         );
 
         sliderPanelContainer.add(panelConfig, "card5");
+        panelConfig.getAccessibleContext().setAccessibleName("panelConfig");
 
         javax.swing.GroupLayout mainContainerPanelLayout = new javax.swing.GroupLayout(mainContainerPanel);
         mainContainerPanel.setLayout(mainContainerPanelLayout);
@@ -289,7 +293,7 @@ public class MiniPC extends javax.swing.JFrame {
             .addComponent(sliderPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        sliderPanelContainer.getAccessibleContext().setAccessibleName("sliderPanelContainer");
+        sliderPanelContainer.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -359,6 +363,6 @@ public class MiniPC extends javax.swing.JFrame {
     public keeptoo.KGradientPanel panelExecute;
     public keeptoo.KGradientPanel panelLoadPrograms;
     public keeptoo.KGradientPanel panelStatistics;
-    private rojerusan.RSPanelsSlider sliderPanelContainer;
+    public rojerusan.RSPanelsSlider sliderPanelContainer;
     // End of variables declaration//GEN-END:variables
 }

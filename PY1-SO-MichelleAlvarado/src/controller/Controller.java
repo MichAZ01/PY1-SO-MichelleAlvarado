@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JFileChooser;
+import rojerusan.RSPanelsSlider;
 
 /**
  *
@@ -22,8 +23,7 @@ public class Controller implements ActionListener{
     public rojerusan.RSButtonIconI[] viewTabButtons;
     
     public Controller(){
-        rojerusan.RSButtonIconI ConfigButtonTab = new rojerusan.RSButtonIconI();
-        this.viewTabButtons = new rojerusan.RSButtonIcon[4]{ConfigButtonTab};
+        this.viewTabButtons = new rojerusan.RSButtonIconI[4];
     }
     
     public void showView(){
@@ -66,6 +66,10 @@ public class Controller implements ActionListener{
                 viewP.setLocationRelativeTo(viewP);
             }
         });
+        this.viewTabButtons[0] = this.view.loadProgramsButtonTab;
+        this.viewTabButtons[1] = this.view.ExecuteButtonTab;
+        this.viewTabButtons[2] = this.view.StatisticsButtonTab;
+        this.viewTabButtons[3] = this.view.ConfigButtonTab;
     }
     
      /**
@@ -79,12 +83,16 @@ public class Controller implements ActionListener{
                 this.OpenFolderButtonActionPerformed(view);
                 break;
             case "loadPrograms":
+                loadProgramsButtonActionPerformed(view);
                 break;
             case "openExecution":
+                openExecutionButtonActionPerformed(view);
                 break;
             case "openStatistics":
+                openStatisticsButtonActionPerformed(view);
                 break;
             case "OpenConfig":
+                OpenConfigButtonActionPerformed(view);
                 break;
             default:
                 break;
@@ -108,5 +116,34 @@ public class Controller implements ActionListener{
             default:
                 break;
         }
+     }
+     
+     public void loadProgramsButtonActionPerformed(javax.swing.JFrame view){
+         this.setSelectedTab(0);
+         this.view.sliderPanelContainer.setPanelSlider(this.view.WIDTH, this.view.panelLoadPrograms, RSPanelsSlider.DIRECT.RIGHT);
+     }
+     
+     public void openExecutionButtonActionPerformed(javax.swing.JFrame view){
+         this.setSelectedTab(1);
+         this.view.sliderPanelContainer.setPanelSlider(this.view.WIDTH, this.view.panelExecute, RSPanelsSlider.DIRECT.RIGHT);
+     }
+     
+     public void openStatisticsButtonActionPerformed(javax.swing.JFrame view){
+         this.setSelectedTab(2);
+         this.view.sliderPanelContainer.setPanelSlider(this.view.WIDTH, this.view.panelStatistics, RSPanelsSlider.DIRECT.RIGHT);
+     }
+     
+     public void OpenConfigButtonActionPerformed(javax.swing.JFrame view){
+         this.setSelectedTab(3);
+         this.view.sliderPanelContainer.setPanelSlider(this.view.WIDTH, this.view.panelConfig, RSPanelsSlider.DIRECT.RIGHT);
+     }
+     
+     public void setSelectedTab(int currentTabIndex){
+         rojerusan.RSButtonIconI button = null;
+         for(int i = 0; i < this.viewTabButtons.length; i++){
+             button = this.viewTabButtons[i];
+             if(i == currentTabIndex) button.setSelected(true);
+             else button.setSelected(false);
+         }
      }
 }
