@@ -34,18 +34,28 @@ public class MiniPC extends javax.swing.JFrame {
         loadProgramsButtonTab = new rojerusan.RSButtonIconI();
         ExecuteButtonTab = new rojerusan.RSButtonIconI();
         StatisticsButtonTab = new rojerusan.RSButtonIconI();
-        ConfigButtonTab = new rojerusan.RSButtonIconI();
         myMiniPCIcon = new rojerusan.RSPanelImage();
         sliderPanelContainer = new rojerusan.RSPanelsSlider();
         panelLoadPrograms = new keeptoo.KGradientPanel();
+        loadProgramsHeader = new javax.swing.JPanel();
         openFilesButton = new javax.swing.JButton();
+        mainMemoryLabel = new javax.swing.JLabel();
+        SecondaryMemoryLabel = new javax.swing.JLabel();
+        mainMemoryScrollPane = new javax.swing.JScrollPane();
+        mainMemoryTable = new javax.swing.JTable();
+        SecondaryMemoryScrollPane1 = new javax.swing.JScrollPane();
+        SecondaryMemoryTable = new javax.swing.JTable();
+        loadedFilesLabel = new javax.swing.JLabel();
+        loadedFilesScrollPane = new javax.swing.JScrollPane();
+        loadedFilesTable = new javax.swing.JTable();
+        saveProgramsButton = new javax.swing.JButton();
         panelExecute = new keeptoo.KGradientPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        processesContainer = new javax.swing.JPanel();
+        ProcessesScrollPane = new javax.swing.JScrollPane();
+        processesTable = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         panelStatistics = new keeptoo.KGradientPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        panelConfig = new keeptoo.KGradientPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MiniPC OS");
@@ -94,17 +104,6 @@ public class MiniPC extends javax.swing.JFrame {
         StatisticsButtonTab.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
         StatisticsButtonTab.setName("StatisticsButtonTab"); // NOI18N
 
-        ConfigButtonTab.setBackground(new java.awt.Color(90, 129, 158));
-        ConfigButtonTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/settings.png"))); // NOI18N
-        ConfigButtonTab.setText("Configuraciones      ");
-        ConfigButtonTab.setActionCommand("OpenConfig");
-        ConfigButtonTab.setBorderPainted(false);
-        ConfigButtonTab.setColorHover(new java.awt.Color(108, 194, 189));
-        ConfigButtonTab.setFocusPainted(false);
-        ConfigButtonTab.setFocusable(false);
-        ConfigButtonTab.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
-        ConfigButtonTab.setName("ConfigButtonTab"); // NOI18N
-
         myMiniPCIcon.setImagen(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/my-computer-icon.png"))); // NOI18N
 
         javax.swing.GroupLayout myMiniPCIconLayout = new javax.swing.GroupLayout(myMiniPCIcon);
@@ -125,7 +124,6 @@ public class MiniPC extends javax.swing.JFrame {
             .addComponent(loadProgramsButtonTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(ExecuteButtonTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(StatisticsButtonTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(ConfigButtonTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuContainerLayout.createSequentialGroup()
                 .addContainerGap(51, Short.MAX_VALUE)
                 .addComponent(myMiniPCIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,16 +132,14 @@ public class MiniPC extends javax.swing.JFrame {
         menuContainerLayout.setVerticalGroup(
             menuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuContainerLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(31, 31, 31)
                 .addComponent(myMiniPCIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(79, 79, 79)
                 .addComponent(loadProgramsButtonTab, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ExecuteButtonTab, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(StatisticsButtonTab, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ConfigButtonTab, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -151,17 +147,20 @@ public class MiniPC extends javax.swing.JFrame {
         ExecuteButtonTab.getAccessibleContext().setAccessibleName("ExecuteButtonTab");
         ExecuteButtonTab.getAccessibleContext().setAccessibleDescription("");
         StatisticsButtonTab.getAccessibleContext().setAccessibleName("StatisticsButtonTab");
-        ConfigButtonTab.getAccessibleContext().setAccessibleName("ConfigButtonTab");
 
         sliderPanelContainer.setBackground(new java.awt.Color(255, 255, 255));
         sliderPanelContainer.setName("sliderPanelContainer"); // NOI18N
 
-        panelLoadPrograms.setkEndColor(new java.awt.Color(108, 194, 189));
-        panelLoadPrograms.setkGradientFocus(200);
-        panelLoadPrograms.setkStartColor(new java.awt.Color(255, 193, 167));
+        panelLoadPrograms.setkEndColor(new java.awt.Color(255, 193, 167));
+        panelLoadPrograms.setkGradientFocus(800);
+        panelLoadPrograms.setkStartColor(new java.awt.Color(108, 194, 189));
         panelLoadPrograms.setName("panelLoadPrograms"); // NOI18N
 
+        loadProgramsHeader.setBackground(new java.awt.Color(90, 129, 158));
+        loadProgramsHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
         openFilesButton.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        openFilesButton.setForeground(new java.awt.Color(255, 255, 255));
         openFilesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/open_folder.png"))); // NOI18N
         openFilesButton.setText("Abrir archivos");
         openFilesButton.setActionCommand("openFiles");
@@ -172,111 +171,949 @@ public class MiniPC extends javax.swing.JFrame {
         openFilesButton.setFocusable(false);
         openFilesButton.setName("openFilesButton"); // NOI18N
 
+        javax.swing.GroupLayout loadProgramsHeaderLayout = new javax.swing.GroupLayout(loadProgramsHeader);
+        loadProgramsHeader.setLayout(loadProgramsHeaderLayout);
+        loadProgramsHeaderLayout.setHorizontalGroup(
+            loadProgramsHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loadProgramsHeaderLayout.createSequentialGroup()
+                .addComponent(openFilesButton)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        loadProgramsHeaderLayout.setVerticalGroup(
+            loadProgramsHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(openFilesButton)
+        );
+
+        openFilesButton.getAccessibleContext().setAccessibleName("openFilesButton");
+
+        mainMemoryLabel.setFont(new java.awt.Font("Bodoni MT", 1, 20)); // NOI18N
+        mainMemoryLabel.setText("Memoria Principal");
+
+        SecondaryMemoryLabel.setFont(new java.awt.Font("Bodoni MT", 1, 20)); // NOI18N
+        SecondaryMemoryLabel.setText("Memoria Secundaria");
+
+        mainMemoryTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Posición", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        mainMemoryTable.setRowHeight(18);
+        mainMemoryTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        mainMemoryScrollPane.setViewportView(mainMemoryTable);
+        mainMemoryTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+        mainMemoryTable.getColumnModel().getColumn(1).setPreferredWidth(130);
+
+        SecondaryMemoryTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Posición", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        SecondaryMemoryTable.setRowHeight(18);
+        SecondaryMemoryTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        SecondaryMemoryScrollPane1.setViewportView(SecondaryMemoryTable);
+        SecondaryMemoryTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+        SecondaryMemoryTable.getColumnModel().getColumn(1).setPreferredWidth(130);
+
+        loadedFilesLabel.setFont(new java.awt.Font("Bodoni MT", 1, 20)); // NOI18N
+        loadedFilesLabel.setText("Archivos cargados");
+
+        loadedFilesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Color", "Nombre del programa", "Estado actual"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        loadedFilesTable.setRowHeight(18);
+        loadedFilesScrollPane.setViewportView(loadedFilesTable);
+        loadedFilesTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+        loadedFilesTable.getColumnModel().getColumn(1).setPreferredWidth(130);
+        loadedFilesTable.getColumnModel().getColumn(2).setPreferredWidth(130);
+
+        saveProgramsButton.setBackground(new java.awt.Color(208, 236, 240));
+        saveProgramsButton.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
+        saveProgramsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/arrow up.png"))); // NOI18N
+        saveProgramsButton.setText("Cargar programas \nen memoria");
+        saveProgramsButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        saveProgramsButton.setContentAreaFilled(false);
+        saveProgramsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveProgramsButton.setMargin(new java.awt.Insets(4, 14, 4, 14));
+
         javax.swing.GroupLayout panelLoadProgramsLayout = new javax.swing.GroupLayout(panelLoadPrograms);
         panelLoadPrograms.setLayout(panelLoadProgramsLayout);
         panelLoadProgramsLayout.setHorizontalGroup(
             panelLoadProgramsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loadProgramsHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelLoadProgramsLayout.createSequentialGroup()
-                .addGap(431, 431, 431)
-                .addComponent(openFilesButton)
-                .addContainerGap(487, Short.MAX_VALUE))
+                .addGroup(panelLoadProgramsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLoadProgramsLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(mainMemoryLabel))
+                    .addGroup(panelLoadProgramsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(mainMemoryScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(panelLoadProgramsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLoadProgramsLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(SecondaryMemoryScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(loadedFilesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(panelLoadProgramsLayout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(SecondaryMemoryLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(loadedFilesLabel)
+                        .addGap(125, 125, 125))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoadProgramsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(saveProgramsButton)
+                .addGap(50, 50, 50))
         );
         panelLoadProgramsLayout.setVerticalGroup(
             panelLoadProgramsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoadProgramsLayout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(openFilesButton)
-                .addContainerGap(431, Short.MAX_VALUE))
+                .addComponent(loadProgramsHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(panelLoadProgramsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mainMemoryLabel)
+                    .addComponent(SecondaryMemoryLabel)
+                    .addComponent(loadedFilesLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelLoadProgramsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(mainMemoryScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                    .addComponent(SecondaryMemoryScrollPane1)
+                    .addComponent(loadedFilesScrollPane))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(saveProgramsButton)
+                .addGap(38, 38, 38))
         );
-
-        openFilesButton.getAccessibleContext().setAccessibleName("openFilesButton");
 
         sliderPanelContainer.add(panelLoadPrograms, "card2");
         panelLoadPrograms.getAccessibleContext().setAccessibleName("");
 
         panelExecute.setkEndColor(new java.awt.Color(108, 194, 189));
-        panelExecute.setkGradientFocus(200);
+        panelExecute.setkGradientFocus(800);
         panelExecute.setkStartColor(new java.awt.Color(255, 193, 167));
         panelExecute.setName("panelExecute"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        processesContainer.setBackground(new java.awt.Color(255, 193, 167));
+        processesContainer.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        processesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Color", "ID", "Proceso", "Nombre del programa", "Estado"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        processesTable.setFocusable(false);
+        processesTable.setRowHeight(18);
+        processesTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        ProcessesScrollPane.setViewportView(processesTable);
+        processesTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+        processesTable.getColumnModel().getColumn(1).setPreferredWidth(1);
+        processesTable.getColumnModel().getColumn(2).setPreferredWidth(130);
+        processesTable.getColumnModel().getColumn(3).setPreferredWidth(130);
+        processesTable.getColumnModel().getColumn(4).setPreferredWidth(130);
+
+        javax.swing.GroupLayout processesContainerLayout = new javax.swing.GroupLayout(processesContainer);
+        processesContainer.setLayout(processesContainerLayout);
+        processesContainerLayout.setHorizontalGroup(
+            processesContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(processesContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ProcessesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        processesContainerLayout.setVerticalGroup(
+            processesContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(processesContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ProcessesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton2.setFont(new java.awt.Font("Bahnschrift", 0, 15)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/start.png"))); // NOI18N
+        jButton2.setText("Iniciar");
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setFocusPainted(false);
+        jButton2.setFocusable(false);
+
+        jButton1.setFont(new java.awt.Font("Bahnschrift", 0, 15)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/next.png"))); // NOI18N
+        jButton1.setText("Siguiente");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setFocusable(false);
 
         javax.swing.GroupLayout panelExecuteLayout = new javax.swing.GroupLayout(panelExecute);
         panelExecute.setLayout(panelExecuteLayout);
         panelExecuteLayout.setHorizontalGroup(
             panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelExecuteLayout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(414, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelExecuteLayout.createSequentialGroup()
+                        .addComponent(processesContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(292, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExecuteLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton1)
+                        .addGap(31, 31, 31))))
         );
         panelExecuteLayout.setVerticalGroup(
             panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelExecuteLayout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(processesContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 496, Short.MAX_VALUE)
+                .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(25, 25, 25))
         );
 
         sliderPanelContainer.add(panelExecute, "card3");
         panelExecute.getAccessibleContext().setAccessibleName("");
 
         panelStatistics.setkEndColor(new java.awt.Color(108, 194, 189));
-        panelStatistics.setkGradientFocus(200);
+        panelStatistics.setkGradientFocus(1400);
         panelStatistics.setkStartColor(new java.awt.Color(255, 193, 167));
         panelStatistics.setName("panelStatistics"); // NOI18N
-
-        jScrollPane2.setViewportView(jTree1);
 
         javax.swing.GroupLayout panelStatisticsLayout = new javax.swing.GroupLayout(panelStatistics);
         panelStatistics.setLayout(panelStatisticsLayout);
         panelStatisticsLayout.setHorizontalGroup(
             panelStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelStatisticsLayout.createSequentialGroup()
-                .addContainerGap(637, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(393, 393, 393))
+            .addGap(0, 1109, Short.MAX_VALUE)
         );
         panelStatisticsLayout.setVerticalGroup(
             panelStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelStatisticsLayout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(303, Short.MAX_VALUE))
+            .addGap(0, 765, Short.MAX_VALUE)
         );
 
         sliderPanelContainer.add(panelStatistics, "card4");
         panelStatistics.getAccessibleContext().setAccessibleName("panelStatistics");
-
-        panelConfig.setkEndColor(new java.awt.Color(108, 194, 189));
-        panelConfig.setkGradientFocus(200);
-        panelConfig.setkStartColor(new java.awt.Color(255, 193, 167));
-        panelConfig.setName("panelConfig"); // NOI18N
-
-        javax.swing.GroupLayout panelConfigLayout = new javax.swing.GroupLayout(panelConfig);
-        panelConfig.setLayout(panelConfigLayout);
-        panelConfigLayout.setHorizontalGroup(
-            panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1109, Short.MAX_VALUE)
-        );
-        panelConfigLayout.setVerticalGroup(
-            panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 765, Short.MAX_VALUE)
-        );
-
-        sliderPanelContainer.add(panelConfig, "card5");
-        panelConfig.getAccessibleContext().setAccessibleName("panelConfig");
 
         javax.swing.GroupLayout mainContainerPanelLayout = new javax.swing.GroupLayout(mainContainerPanel);
         mainContainerPanel.setLayout(mainContainerPanelLayout);
@@ -347,22 +1184,32 @@ public class MiniPC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public rojerusan.RSButtonIconI ConfigButtonTab;
     public rojerusan.RSButtonIconI ExecuteButtonTab;
+    private javax.swing.JScrollPane ProcessesScrollPane;
+    private javax.swing.JLabel SecondaryMemoryLabel;
+    private javax.swing.JScrollPane SecondaryMemoryScrollPane1;
+    public javax.swing.JTable SecondaryMemoryTable;
     public rojerusan.RSButtonIconI StatisticsButtonTab;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTree jTree1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     public rojerusan.RSButtonIconI loadProgramsButtonTab;
+    private javax.swing.JPanel loadProgramsHeader;
+    private javax.swing.JLabel loadedFilesLabel;
+    private javax.swing.JScrollPane loadedFilesScrollPane;
+    public javax.swing.JTable loadedFilesTable;
     private keeptoo.KGradientPanel mainContainerPanel;
+    private javax.swing.JLabel mainMemoryLabel;
+    private javax.swing.JScrollPane mainMemoryScrollPane;
+    public javax.swing.JTable mainMemoryTable;
     private javax.swing.JPanel menuContainer;
     private rojerusan.RSPanelImage myMiniPCIcon;
     public javax.swing.JButton openFilesButton;
-    public keeptoo.KGradientPanel panelConfig;
     public keeptoo.KGradientPanel panelExecute;
     public keeptoo.KGradientPanel panelLoadPrograms;
     public keeptoo.KGradientPanel panelStatistics;
+    private javax.swing.JPanel processesContainer;
+    public javax.swing.JTable processesTable;
+    public javax.swing.JButton saveProgramsButton;
     public rojerusan.RSPanelsSlider sliderPanelContainer;
     // End of variables declaration//GEN-END:variables
 }
