@@ -53,9 +53,58 @@ public class MiniPC extends javax.swing.JFrame {
         processesContainer = new javax.swing.JPanel();
         ProcessesScrollPane = new javax.swing.JScrollPane();
         processesTable = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        startButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        screenScrollPane = new javax.swing.JScrollPane();
+        screenIOPanel = new javax.swing.JPanel();
+        keyboardScrollPane = new javax.swing.JScrollPane();
+        keyboard = new javax.swing.JTextField();
+        core1TabbedPane = new javax.swing.JTabbedPane();
+        core1Panel = new javax.swing.JPanel();
+        processCore1Label = new java.awt.Label();
+        IRRegisterCore1Label = new java.awt.Label();
+        IRRegisterCore1Value = new java.awt.Label();
+        processCore1IDValue = new java.awt.Label();
+        core2TabbedPane = new javax.swing.JTabbedPane();
+        core2Panel = new javax.swing.JPanel();
+        processCore2Label = new java.awt.Label();
+        IRRegisterCore2Label = new java.awt.Label();
+        processCore2IDValue = new java.awt.Label();
+        BCP1ScrollPane = new javax.swing.JScrollPane();
+        panelBCP1 = new javax.swing.JPanel();
+        idProcessBCP1Label = new java.awt.Label();
+        BCPprocessCore1Label = new java.awt.Label();
+        stateBCP1Label = new java.awt.Label();
+        pcRegisterBCP1Label = new java.awt.Label();
+        acRegisterBCP1Label = new java.awt.Label();
+        axRegisterBCP1Label = new java.awt.Label();
+        bxRegisterBCP1Label = new java.awt.Label();
+        cxRegisterBCP1Label = new java.awt.Label();
+        dxRegisterBCP1Label = new java.awt.Label();
+        ESStateBCP1Label = new java.awt.Label();
+        initTimeBCP1Label = new java.awt.Label();
+        jSeparator1 = new javax.swing.JSeparator();
+        stackBCP1ScrollPane = new javax.swing.JScrollPane();
+        stackBCP1 = new javax.swing.JTable();
+        BCP2ScrollPane = new javax.swing.JScrollPane();
+        BCP2Panel = new javax.swing.JPanel();
+        BCPprocessCore2Label = new java.awt.Label();
+        jSeparator2 = new javax.swing.JSeparator();
+        pcRegisterBCP2Label = new java.awt.Label();
+        axRegisterBCP2Label = new java.awt.Label();
+        dxRegisterBCP2Label = new java.awt.Label();
+        idProcessBCP2Label = new java.awt.Label();
+        stateBCP2Label = new java.awt.Label();
+        cxRegisterBCP2Label = new java.awt.Label();
+        acRegisterBCP2Label = new java.awt.Label();
+        bxRegisterBCP2Label = new java.awt.Label();
+        ESStateBCP2Label = new java.awt.Label();
+        initTimeBCP2Label = new java.awt.Label();
+        stackBCP2ScrollPane = new javax.swing.JScrollPane();
+        stackBCP2 = new javax.swing.JTable();
         panelStatistics = new keeptoo.KGradientPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MiniPC OS");
@@ -978,7 +1027,7 @@ public class MiniPC extends javax.swing.JFrame {
                     .addComponent(mainMemoryScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                     .addComponent(SecondaryMemoryScrollPane1)
                     .addComponent(loadedFilesScrollPane))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(saveProgramsButton)
                 .addGap(38, 38, 38))
         );
@@ -1035,8 +1084,8 @@ public class MiniPC extends javax.swing.JFrame {
             processesContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(processesContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ProcessesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ProcessesScrollPane)
+                .addContainerGap())
         );
         processesContainerLayout.setVerticalGroup(
             processesContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1046,23 +1095,406 @@ public class MiniPC extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton2.setFont(new java.awt.Font("Bahnschrift", 0, 15)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/start.png"))); // NOI18N
-        jButton2.setText("Iniciar");
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setFocusPainted(false);
-        jButton2.setFocusable(false);
+        startButton.setFont(new java.awt.Font("Bahnschrift", 0, 15)); // NOI18N
+        startButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/start.png"))); // NOI18N
+        startButton.setText("Iniciar");
+        startButton.setBorder(null);
+        startButton.setBorderPainted(false);
+        startButton.setContentAreaFilled(false);
+        startButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startButton.setFocusPainted(false);
+        startButton.setFocusable(false);
 
-        jButton1.setFont(new java.awt.Font("Bahnschrift", 0, 15)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/next.png"))); // NOI18N
-        jButton1.setText("Siguiente");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setFocusPainted(false);
-        jButton1.setFocusable(false);
+        nextButton.setFont(new java.awt.Font("Bahnschrift", 0, 15)); // NOI18N
+        nextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/next.png"))); // NOI18N
+        nextButton.setText("Siguiente");
+        nextButton.setBorder(null);
+        nextButton.setBorderPainted(false);
+        nextButton.setContentAreaFilled(false);
+        nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nextButton.setFocusPainted(false);
+        nextButton.setFocusable(false);
+
+        screenScrollPane.setBackground(new java.awt.Color(208, 236, 240));
+        screenScrollPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        screenScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        screenIOPanel.setBackground(new java.awt.Color(208, 236, 240));
+
+        javax.swing.GroupLayout screenIOPanelLayout = new javax.swing.GroupLayout(screenIOPanel);
+        screenIOPanel.setLayout(screenIOPanelLayout);
+        screenIOPanelLayout.setHorizontalGroup(
+            screenIOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 477, Short.MAX_VALUE)
+        );
+        screenIOPanelLayout.setVerticalGroup(
+            screenIOPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 145, Short.MAX_VALUE)
+        );
+
+        screenScrollPane.setViewportView(screenIOPanel);
+
+        keyboardScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        keyboard.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        keyboard.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        keyboard.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        keyboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keyboardActionPerformed(evt);
+            }
+        });
+        keyboardScrollPane.setViewportView(keyboard);
+
+        core1TabbedPane.setFocusable(false);
+
+        core1Panel.setBackground(new java.awt.Color(251, 236, 204));
+
+        processCore1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        processCore1Label.setText("ID Proceso:");
+
+        IRRegisterCore1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        IRRegisterCore1Label.setText("IR:");
+
+        IRRegisterCore1Value.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        IRRegisterCore1Value.setText("-");
+
+        processCore1IDValue.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        processCore1IDValue.setText("-");
+
+        javax.swing.GroupLayout core1PanelLayout = new javax.swing.GroupLayout(core1Panel);
+        core1Panel.setLayout(core1PanelLayout);
+        core1PanelLayout.setHorizontalGroup(
+            core1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(core1PanelLayout.createSequentialGroup()
+                .addGroup(core1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(core1PanelLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(IRRegisterCore1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IRRegisterCore1Value, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
+                    .addGroup(core1PanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(processCore1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(processCore1IDValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        core1PanelLayout.setVerticalGroup(
+            core1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(core1PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(core1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(processCore1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(processCore1IDValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(core1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(IRRegisterCore1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IRRegisterCore1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        core1TabbedPane.addTab("Núcleo 1", core1Panel);
+
+        core2TabbedPane.setFocusable(false);
+
+        core2Panel.setBackground(new java.awt.Color(251, 236, 204));
+
+        processCore2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        processCore2Label.setText("ID Proceso:");
+
+        IRRegisterCore2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        IRRegisterCore2Label.setText("IR:");
+
+        processCore2IDValue.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        processCore2IDValue.setText("-");
+
+        javax.swing.GroupLayout core2PanelLayout = new javax.swing.GroupLayout(core2Panel);
+        core2Panel.setLayout(core2PanelLayout);
+        core2PanelLayout.setHorizontalGroup(
+            core2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(core2PanelLayout.createSequentialGroup()
+                .addGroup(core2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(core2PanelLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(IRRegisterCore2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(core2PanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(processCore2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(processCore2IDValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        core2PanelLayout.setVerticalGroup(
+            core2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(core2PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(core2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(processCore2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(processCore2IDValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(IRRegisterCore2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        core2TabbedPane.addTab("Núcleo 2", core2Panel);
+
+        BCP1ScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        panelBCP1.setBackground(new java.awt.Color(251, 236, 204));
+
+        idProcessBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        idProcessBCP1Label.setText("ID Proceso:");
+
+        BCPprocessCore1Label.setAlignment(java.awt.Label.CENTER);
+        BCPprocessCore1Label.setBackground(new java.awt.Color(255, 255, 255));
+        BCPprocessCore1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        BCPprocessCore1Label.setText("BCP Proceso Núcleo 1");
+
+        stateBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        stateBCP1Label.setText("Estado:");
+
+        pcRegisterBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        pcRegisterBCP1Label.setText("PC:");
+
+        acRegisterBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        acRegisterBCP1Label.setText("AC:");
+
+        axRegisterBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        axRegisterBCP1Label.setText("AX:");
+
+        bxRegisterBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        bxRegisterBCP1Label.setText("BX:");
+
+        cxRegisterBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        cxRegisterBCP1Label.setText("CX:");
+
+        dxRegisterBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        dxRegisterBCP1Label.setText("DX:");
+
+        ESStateBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        ESStateBCP1Label.setText("Estado de E/S:");
+
+        initTimeBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        initTimeBCP1Label.setText("Tiempo inicio:");
+
+        stackBCP1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Pila"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        stackBCP1.setRowHeight(30);
+        stackBCP1.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        stackBCP1ScrollPane.setViewportView(stackBCP1);
+
+        javax.swing.GroupLayout panelBCP1Layout = new javax.swing.GroupLayout(panelBCP1);
+        panelBCP1.setLayout(panelBCP1Layout);
+        panelBCP1Layout.setHorizontalGroup(
+            panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(BCPprocessCore1Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelBCP1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelBCP1Layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(dxRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cxRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bxRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(axRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(acRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pcRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(idProcessBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stateBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBCP1Layout.createSequentialGroup()
+                        .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ESStateBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(initTimeBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(121, 121, 121))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBCP1Layout.createSequentialGroup()
+                        .addComponent(stackBCP1ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110))))
+        );
+        panelBCP1Layout.setVerticalGroup(
+            panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBCP1Layout.createSequentialGroup()
+                .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelBCP1Layout.createSequentialGroup()
+                        .addComponent(BCPprocessCore1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(idProcessBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ESStateBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(stateBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(initTimeBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBCP1Layout.createSequentialGroup()
+                        .addComponent(pcRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(acRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(axRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bxRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cxRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dxRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stackBCP1ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(84, Short.MAX_VALUE))
+        );
+
+        BCP1ScrollPane.setViewportView(panelBCP1);
+
+        BCP2Panel.setBackground(new java.awt.Color(251, 236, 204));
+
+        BCPprocessCore2Label.setAlignment(java.awt.Label.CENTER);
+        BCPprocessCore2Label.setBackground(new java.awt.Color(255, 255, 255));
+        BCPprocessCore2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        BCPprocessCore2Label.setText("BCP Proceso Núcleo 2");
+
+        pcRegisterBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        pcRegisterBCP2Label.setText("PC:");
+
+        axRegisterBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        axRegisterBCP2Label.setText("AX:");
+
+        dxRegisterBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        dxRegisterBCP2Label.setText("DX:");
+
+        idProcessBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        idProcessBCP2Label.setText("ID Proceso:");
+
+        stateBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        stateBCP2Label.setText("Estado:");
+
+        cxRegisterBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        cxRegisterBCP2Label.setText("CX:");
+
+        acRegisterBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        acRegisterBCP2Label.setText("AC:");
+
+        bxRegisterBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        bxRegisterBCP2Label.setText("BX:");
+
+        ESStateBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        ESStateBCP2Label.setText("Estado de E/S:");
+
+        initTimeBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        initTimeBCP2Label.setText("Tiempo inicio:");
+
+        stackBCP2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Pila"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        stackBCP2.setRowHeight(30);
+        stackBCP2.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        stackBCP2ScrollPane.setViewportView(stackBCP2);
+
+        javax.swing.GroupLayout BCP2PanelLayout = new javax.swing.GroupLayout(BCP2Panel);
+        BCP2Panel.setLayout(BCP2PanelLayout);
+        BCP2PanelLayout.setHorizontalGroup(
+            BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator2)
+            .addComponent(BCPprocessCore2Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(BCP2PanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BCP2PanelLayout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(dxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(axRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(acRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pcRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(idProcessBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BCP2PanelLayout.createSequentialGroup()
+                        .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ESStateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(initTimeBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11))
+                    .addComponent(stackBCP2ScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(111, 111, 111))
+        );
+        BCP2PanelLayout.setVerticalGroup(
+            BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BCP2PanelLayout.createSequentialGroup()
+                .addComponent(BCPprocessCore2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BCP2PanelLayout.createSequentialGroup()
+                        .addComponent(idProcessBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pcRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(acRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(axRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(BCP2PanelLayout.createSequentialGroup()
+                        .addComponent(ESStateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(initTimeBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stackBCP2ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+
+        BCP2ScrollPane.setViewportView(BCP2Panel);
 
         javax.swing.GroupLayout panelExecuteLayout = new javax.swing.GroupLayout(panelExecute);
         panelExecute.setLayout(panelExecuteLayout);
@@ -1072,25 +1504,50 @@ public class MiniPC extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelExecuteLayout.createSequentialGroup()
-                        .addComponent(processesContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(292, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExecuteLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1)
-                        .addGap(31, 31, 31))))
+                        .addComponent(processesContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(startButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(nextButton))
+                    .addGroup(panelExecuteLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(screenScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(keyboardScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(BCP1ScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BCP2ScrollPane)
+                            .addComponent(core1TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(core2TabbedPane))
+                        .addGap(82, 82, 82)))
+                .addContainerGap())
         );
         panelExecuteLayout.setVerticalGroup(
             panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelExecuteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(processesContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 496, Short.MAX_VALUE)
-                .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(25, 25, 25))
+                .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(processesContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nextButton)
+                        .addComponent(startButton)))
+                .addGap(10, 10, 10)
+                .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelExecuteLayout.createSequentialGroup()
+                        .addComponent(core1TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(core2TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelExecuteLayout.createSequentialGroup()
+                        .addComponent(screenScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(keyboardScrollPane)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelExecuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BCP1ScrollPane)
+                    .addComponent(BCP2ScrollPane))
+                .addContainerGap())
         );
 
         sliderPanelContainer.add(panelExecute, "card3");
@@ -1101,15 +1558,49 @@ public class MiniPC extends javax.swing.JFrame {
         panelStatistics.setkStartColor(new java.awt.Color(255, 193, 167));
         panelStatistics.setName("panelStatistics"); // NOI18N
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Pila"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setRowHeight(18);
+        jTable1.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout panelStatisticsLayout = new javax.swing.GroupLayout(panelStatistics);
         panelStatistics.setLayout(panelStatisticsLayout);
         panelStatisticsLayout.setHorizontalGroup(
             panelStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1109, Short.MAX_VALUE)
+            .addGroup(panelStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelStatisticsLayout.createSequentialGroup()
+                    .addContainerGap(328, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(644, Short.MAX_VALUE)))
         );
         panelStatisticsLayout.setVerticalGroup(
             panelStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 765, Short.MAX_VALUE)
+            .addGap(0, 768, Short.MAX_VALUE)
+            .addGroup(panelStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelStatisticsLayout.createSequentialGroup()
+                    .addContainerGap(169, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(478, Short.MAX_VALUE)))
         );
 
         sliderPanelContainer.add(panelStatistics, "card4");
@@ -1148,6 +1639,10 @@ public class MiniPC extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void keyboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keyboardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_keyboardActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1184,14 +1679,46 @@ public class MiniPC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane BCP1ScrollPane;
+    public javax.swing.JPanel BCP2Panel;
+    private javax.swing.JScrollPane BCP2ScrollPane;
+    private java.awt.Label BCPprocessCore1Label;
+    private java.awt.Label BCPprocessCore2Label;
+    private java.awt.Label ESStateBCP1Label;
+    private java.awt.Label ESStateBCP2Label;
     public rojerusan.RSButtonIconI ExecuteButtonTab;
+    private java.awt.Label IRRegisterCore1Label;
+    public java.awt.Label IRRegisterCore1Value;
+    private java.awt.Label IRRegisterCore2Label;
     private javax.swing.JScrollPane ProcessesScrollPane;
     private javax.swing.JLabel SecondaryMemoryLabel;
     private javax.swing.JScrollPane SecondaryMemoryScrollPane1;
     public javax.swing.JTable SecondaryMemoryTable;
     public rojerusan.RSButtonIconI StatisticsButtonTab;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private java.awt.Label acRegisterBCP1Label;
+    private java.awt.Label acRegisterBCP2Label;
+    private java.awt.Label axRegisterBCP1Label;
+    private java.awt.Label axRegisterBCP2Label;
+    private java.awt.Label bxRegisterBCP1Label;
+    private java.awt.Label bxRegisterBCP2Label;
+    public javax.swing.JPanel core1Panel;
+    private javax.swing.JTabbedPane core1TabbedPane;
+    public javax.swing.JPanel core2Panel;
+    private javax.swing.JTabbedPane core2TabbedPane;
+    private java.awt.Label cxRegisterBCP1Label;
+    private java.awt.Label cxRegisterBCP2Label;
+    private java.awt.Label dxRegisterBCP1Label;
+    private java.awt.Label dxRegisterBCP2Label;
+    private java.awt.Label idProcessBCP1Label;
+    private java.awt.Label idProcessBCP2Label;
+    private java.awt.Label initTimeBCP1Label;
+    private java.awt.Label initTimeBCP2Label;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable jTable1;
+    public javax.swing.JTextField keyboard;
+    private javax.swing.JScrollPane keyboardScrollPane;
     public rojerusan.RSButtonIconI loadProgramsButtonTab;
     private javax.swing.JPanel loadProgramsHeader;
     private javax.swing.JLabel loadedFilesLabel;
@@ -1199,17 +1726,34 @@ public class MiniPC extends javax.swing.JFrame {
     public javax.swing.JTable loadedFilesTable;
     private keeptoo.KGradientPanel mainContainerPanel;
     private javax.swing.JLabel mainMemoryLabel;
-    private javax.swing.JScrollPane mainMemoryScrollPane;
+    public javax.swing.JScrollPane mainMemoryScrollPane;
     public javax.swing.JTable mainMemoryTable;
     private javax.swing.JPanel menuContainer;
     private rojerusan.RSPanelImage myMiniPCIcon;
+    public javax.swing.JButton nextButton;
     public javax.swing.JButton openFilesButton;
+    public javax.swing.JPanel panelBCP1;
     public keeptoo.KGradientPanel panelExecute;
     public keeptoo.KGradientPanel panelLoadPrograms;
     public keeptoo.KGradientPanel panelStatistics;
+    private java.awt.Label pcRegisterBCP1Label;
+    private java.awt.Label pcRegisterBCP2Label;
+    public java.awt.Label processCore1IDValue;
+    private java.awt.Label processCore1Label;
+    public java.awt.Label processCore2IDValue;
+    private java.awt.Label processCore2Label;
     private javax.swing.JPanel processesContainer;
     public javax.swing.JTable processesTable;
     public javax.swing.JButton saveProgramsButton;
+    public javax.swing.JPanel screenIOPanel;
+    private javax.swing.JScrollPane screenScrollPane;
     public rojerusan.RSPanelsSlider sliderPanelContainer;
+    public javax.swing.JTable stackBCP1;
+    private javax.swing.JScrollPane stackBCP1ScrollPane;
+    public javax.swing.JTable stackBCP2;
+    private javax.swing.JScrollPane stackBCP2ScrollPane;
+    public javax.swing.JButton startButton;
+    private java.awt.Label stateBCP1Label;
+    private java.awt.Label stateBCP2Label;
     // End of variables declaration//GEN-END:variables
 }
