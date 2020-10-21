@@ -6,6 +6,8 @@
 package logic;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -64,5 +66,19 @@ public class FileReader {
         buffer.close();
         
         return size;
+    }
+    
+    /**
+     * return an string that contains the all lines of the file concatenated
+     * @param file: an assembly file
+     * @return
+     * @throws IOException 
+     */
+    public String extractFileInfo(File file) throws IOException {
+        FileInputStream tokensFile = new FileInputStream(file);
+        byte[] dataBytes = new byte[(int) file.length()];
+        tokensFile.read(dataBytes);
+        String data = new String(dataBytes, "UTF-8");
+        return data;
     }
 }

@@ -8,13 +8,15 @@ package controller;
 import GUI.ColorRenderer;
 import GUI.MiniPC;
 import GUI.MyCustomFilter;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Random;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
+import logic.CPU;
 import rojerusan.RSPanelsSlider;
 
 /**
@@ -22,10 +24,9 @@ import rojerusan.RSPanelsSlider;
  * @author Michelle Alvarado
  */
 public class Controller implements ActionListener {
-
     private MiniPC view;
-    public File[] selectedFiles = null;
     public rojerusan.RSButtonIconI[] viewTabButtons;
+    public TableController tableController;
 
     public Controller() {
         this.viewTabButtons = new rojerusan.RSButtonIconI[3];
@@ -73,11 +74,12 @@ public class Controller implements ActionListener {
         this.viewTabButtons[0] = this.view.loadProgramsButtonTab;
         this.viewTabButtons[1] = this.view.ExecuteButtonTab;
         this.viewTabButtons[2] = this.view.StatisticsButtonTab;
+        this.tableController = new TableController(this.view);
     }
 
     /**
      * Manages the different cases for an event like open a file, start the
-     * execution of a program or execute the next instruction of a program
+     * execution of a process or execute the next instruction of a process
      *
      * @param ae: an event produced by an object in the view (button in this
      * case)
@@ -86,7 +88,13 @@ public class Controller implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         switch (ae.getActionCommand()) {
             case "openFiles":
+        {
+            try {
                 this.OpenFolderButtonActionPerformed(view);
+            } catch (IOException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case "loadPrograms":
                 loadProgramsButtonActionPerformed(view);
@@ -102,18 +110,16 @@ public class Controller implements ActionListener {
         }
     }
 
-    public void OpenFolderButtonActionPerformed(javax.swing.JFrame view) {
+    public void OpenFolderButtonActionPerformed(javax.swing.JFrame view) throws IOException {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setMultiSelectionEnabled(true);
         fileChooser.setAcceptAllFileFilterUsed(false);
         MyCustomFilter assemblerFilter = (MyCustomFilter) new MyCustomFilter(".asm", "Archivo de código Ensamblador");
         fileChooser.addChoosableFileFilter(assemblerFilter);
         int result = fileChooser.showOpenDialog(view);
-        File[] files = null;
         switch (result) {
             case JFileChooser.APPROVE_OPTION:
-                files = fileChooser.getSelectedFiles();
-                this.selectedFiles = files;
+                this.loadProgramsIntoQueue(fileChooser.getSelectedFiles());
             case JFileChooser.CANCEL_OPTION:
                 break;
             default:
@@ -121,86 +127,18 @@ public class Controller implements ActionListener {
         }
     }
 
-    public boolean StringExistsInArray(String string, String[] array) {
-        Boolean exists = false;
-        int size = array.length;
-        String currentString = null;
-        for (int i = 0; i < size; i++) {
-            currentString = array[i];
-            if (currentString == null) {
-                break;
-            } else if (string.equals(currentString)) {
-                exists = true;
-                break;
-            }
+    public void loadProgramsIntoQueue(File[] selectedFiles) throws IOException{
+        CPU.getCPU().loadProcesses(selectedFiles);
+        this.tableController.setLoadedFilesTable();
+        if(CPU.getCPU().hasProcessesToExecute()){
+            this.view.saveProgramsButton.setEnabled(true);
+            this.view.openFilesButton.setEnabled(false);
         }
-        return exists;
-    }
-
-    public Color generateColor(String[] usedColors, int currentIndex) {
-        Color newColor = null;
-        Random random = new Random();
-        while (newColor == null) {
-            final float hue = random.nextFloat(); // Saturation between 0.1 and 0.3 final 
-            float saturation = (random.nextInt(2000) + 1000) / 10000f;
-            final float luminance = 0.9f;
-            final Color color = Color.getHSBColor(hue, saturation, luminance);
-            if (!this.StringExistsInArray(color.toString(), usedColors) && hasOnlyOneCodeEqualy(color.toString(), usedColors, currentIndex)) {
-                newColor = color;
-            }
-        }
-        return newColor;
     }
     
-    public boolean hasOnlyOneCodeEqualy(String color, String[] usedColors, int currentIndex){
-        boolean hasOnlyOne = true;
-        String[] previousColorRGB = null;
-        String[] currentColorRGB = null;
-        int countCoincidences = 0;
-        if(currentIndex > 0){
-            String previousColor = usedColors[currentIndex - 1];
-            if(previousColor != null){
-                previousColorRGB = this.getRGBCodes(previousColor);
-                currentColorRGB = this.getRGBCodes(color);
-                if(previousColorRGB[0].equals(currentColorRGB[0])) countCoincidences ++; 
-                if(previousColorRGB[1].equals(currentColorRGB[1])) countCoincidences ++; 
-                if(previousColorRGB[2].equals(currentColorRGB[2])) countCoincidences ++; 
-            }
-            if(countCoincidences >= 1){
-                return false;
-            }
-        }
-        
-        return hasOnlyOne;
-    }
-    
-    public String[] getRGBCodes(String color){
-        int initialIndex = color.indexOf("[");
-        String rgbCode = color.substring(initialIndex);
-        String[] splitRGBCode = rgbCode.split("=");
-        String red = splitRGBCode[1].split(",")[0];
-        String green = splitRGBCode[2].split(",")[0];
-        String blue = splitRGBCode[3].split("]")[0];
-        return new String[]{red, green, blue};
-    }
-
     public void loadProgramsButtonActionPerformed(javax.swing.JFrame view) {
         this.setSelectedTab(0);
         this.view.sliderPanelContainer.setPanelSlider(this.view.WIDTH, this.view.panelLoadPrograms, RSPanelsSlider.DIRECT.RIGHT);
-        String[] colors = new String[2000];
-        JTable table = null;
-        ColorRenderer renderer = new ColorRenderer();
-        for (int i = 0; i < 512; i++) {
-            Color color = this.generateColor(colors, i);
-            colors[i] = color.toString();
-            for (int j = 0; j < 2; j++) {
-                renderer.setColorForCell(i, j, color);
-            }
-        }
-        this.view.mainMemoryTable.setDefaultRenderer(Object.class, renderer);
-        this.view.mainMemoryTable.validate();
-        this.view.mainMemoryTable.repaint();
-
     }
     
 

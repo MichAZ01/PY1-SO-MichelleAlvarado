@@ -10,14 +10,11 @@ package logic;
  * @author Michelle Alvarado
  */
 public class Register {
-    private String registerName;
     private String registerValue;
-    private int registerIndex;
+    private Address registerAddress;
     
-    public Register(String register){
-        this.registerName = register;
+    public Register(){
         this.registerValue = "";
-        this.registerIndex = -1;
     }
 
     public String getRegisterValue() {
@@ -28,19 +25,11 @@ public class Register {
         this.registerValue = registerValue;
     }
 
-    public String getRegisterName() {
-        return registerName;
+    public Address getRegisterAddress() {
+        return registerAddress;
     }
 
-    public void setRegisterName(String registerName) {
-        this.registerName = registerName;
-    }
-
-    public int getRegisterIndex() {
-        return registerIndex;
-    }
-
-    public void setRegisterIndex(int registerIndex) {
-        this.registerIndex = registerIndex;
+    public void setRegisterAddress(Address registerAddress) {
+        this.registerAddress = registerAddress;
     }
 }

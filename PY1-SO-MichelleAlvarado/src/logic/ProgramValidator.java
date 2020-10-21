@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
  * @author Michelle Alvarado
  */
 public class ProgramValidator {
+
     String[] regexInstructionsArray;
 
     public ProgramValidator() throws IOException {
@@ -26,7 +27,6 @@ public class ProgramValidator {
         String[] regexInstructions = new String[fileLines.length];
         for (int i = 0; i < fileLines.length; i++) {
             regexInstructions[i] = fileLines[i].split(":")[1];
-            System.out.println(regexInstructions[i]);
         }
         this.regexInstructionsArray = regexInstructions;
     }
@@ -41,8 +41,8 @@ public class ProgramValidator {
     public Boolean validateSingleLine(String line) {
         Boolean correctFormat = false;
         String operation = line.split(" ")[0];
-        for(int i = 0; i < this.regexInstructionsArray.length; i++){
-            if(Pattern.matches(this.regexInstructionsArray[i], line)){
+        for (int i = 0; i < this.regexInstructionsArray.length; i++) {
+            if (Pattern.matches(this.regexInstructionsArray[i], line)) {
                 correctFormat = true;
                 break;
             }
@@ -58,17 +58,16 @@ public class ProgramValidator {
      * @return
      * @throws IOException
      */
-    public Boolean validateLineFormat(String data) throws IOException {
-        Boolean correctFormat = true;
+    public String validateLineFormat(String data) throws IOException {
         String lines[] = data.split("\\r?\\n");
-
+        String linesWithError = "";
         for (int i = 0; i < lines.length; i++) {
             if (!validateSingleLine(lines[i])) {
-                correctFormat = false;
-                break;
+                int lineIndex = i + 1;
+                linesWithError += lineIndex + " ";
             }
         }
-        return correctFormat;
+        return linesWithError;
     }
 
     /**
@@ -79,15 +78,29 @@ public class ProgramValidator {
      * @return
      * @throws IOException
      */
-    public Boolean validateSelectedFile(String data) throws IOException {
-        Boolean correctFile = true;
+    public String[] validateSelectedFile(String data) throws IOException {
+        String[] result = new String[2];
         Boolean fileIsEmpty = data.isEmpty();
-        Boolean correctFormat = this.validateLineFormat(data);
 
-        if (fileIsEmpty || !correctFormat) {
-            correctFile = false;
+        if (fileIsEmpty) {
+            result[0] = "1";
+            result[1] = "Error: el archivo está vacío";
+            return result;
+        } else {
+            String linesWithError = this.validateLineFormat(data);
+            if (linesWithError.equals("")) {
+                result[0] = "0";
+                result[1] = "Nuevo";
+            }
+            else{
+                result[0] = "1";
+                if(linesWithError.split(" ").length > 1){
+                    result[1] = "Error en las líneas: " + linesWithError;
+                }
+                else result[1] = "Error en la línea: " + linesWithError;
+            }
         }
 
-        return correctFile;
+        return result;
     }
 }

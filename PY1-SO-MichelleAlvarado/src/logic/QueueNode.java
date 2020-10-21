@@ -10,19 +10,19 @@ package logic;
  * @author Michelle Alvarado
  */
 public class QueueNode {
-    private Program program;
+    private Process process;
     private QueueNode nextNode;
     
-    public QueueNode(Program program){
-        this.program = program;
+    public QueueNode(Process process){
+        this.process = process;
     }
 
-    public Program getProgram() {
-        return program;
+    public Process getProcess() {
+        return process;
     }
 
-    public void setProgram(Program program) {
-        this.program = program;
+    public void setProcess(Process process) {
+        this.process = process;
     }
 
     public QueueNode getNextNode() {

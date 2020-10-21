@@ -9,11 +9,11 @@ package logic;
  *
  * @author Michelle Alvarado
  */
-public class ProgramQueue {
+public class ProcessesQueue<E> {
     private QueueNode firstNode;
     private int queueLength;
     
-    public ProgramQueue(){
+    public ProcessesQueue(){
         this.firstNode = null;
         this.queueLength = 0;
     }
@@ -34,8 +34,8 @@ public class ProgramQueue {
         this.queueLength = queueLength;
     }
     
-    public void push(Program program){
-        QueueNode newNode = new QueueNode(program);
+    public void push(Process process){
+        QueueNode newNode = new QueueNode(process);
         QueueNode currentNode = firstNode;
         if(currentNode == null) this.firstNode = newNode;
         else{
@@ -46,7 +46,7 @@ public class ProgramQueue {
     }
     
     public QueueNode pop(){
-        QueueNode node = new QueueNode(this.firstNode.getProgram());
+        QueueNode node = new QueueNode(this.firstNode.getProcess());
         this.firstNode = this.firstNode.getNextNode();
         this.queueLength -= 1;
         return node;
