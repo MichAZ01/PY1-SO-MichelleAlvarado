@@ -26,6 +26,9 @@ public class CPU {
     private MemoryManager memoryManager = new MemoryManager();
     private ArrayList<Process> currentProcesses;
     private ArrayList<Process> currentReadyProcesses;
+    private Core core1;
+    private Core core2;
+    boolean CPUIsExecutingProcesses;
     
     public CPU(){
         this.CPUCurrentTime = 0;
@@ -36,6 +39,9 @@ public class CPU {
         this.readyProcessesQueue = new ArrayList<PCB>();
         this.currentProcesses = new ArrayList<Process>();
         this.currentReadyProcesses = new ArrayList<Process>();
+        this.core1 = new Core();
+        this.core2 = new Core();
+        this.CPUIsExecutingProcesses = false;
     }
     /**
      * Singleton method
@@ -97,6 +103,7 @@ public class CPU {
                 this.mainMemory.getMemoryRegisters().get(Integer.parseInt(currentProcess.getProcessID())).setRegisterValue(currentProcess.getPCB().getProcessID().getRegisterAddress().getMemoryAddress());
                 currentProcess.getPCB().getPC().setRegisterValue(currentProcess.getProcessInstructions().get(0).getRegisterAddress().getMemoryAddress());
                 currentProcess.getPCB().getCoreWhereIsRunning().setRegisterValue(coreNames[random.nextInt(coreNames.length)]);
+                currentProcess.getPCB().getProcessStatus().setRegisterValue("Preparado");
                 this.readyProcessesQueue.add(currentProcess.getPCB());
                 this.currentReadyProcesses.add(currentProcess);
             } 
@@ -154,6 +161,22 @@ public class CPU {
 
     public ArrayList<Process> getCurrentReadyProcesses() {
         return currentReadyProcesses;
+    }
+
+    public Core getCore1() {
+        return core1;
+    }
+
+    public Core getCore2() {
+        return core2;
+    }
+
+    public boolean CPUIsExecutingProcesses() {
+        return CPUIsExecutingProcesses;
+    }
+
+    public void setCPUIsExecutingProcesses() {
+        this.CPUIsExecutingProcesses = !this.CPUIsExecutingProcesses;
     }
     
     

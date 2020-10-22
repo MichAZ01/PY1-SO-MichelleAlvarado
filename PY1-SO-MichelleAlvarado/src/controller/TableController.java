@@ -29,6 +29,7 @@ public class TableController {
         this.mainMemoryViewTable = viewP.mainMemoryTable;
         this.secondaryMemoryViewTable = viewP.SecondaryMemoryTable;
         this.loadedFilesViewTable = viewP.loadedFilesTable;
+        this.processesViewTable = viewP.processesTable;
     }
 
     /**
@@ -85,7 +86,7 @@ public class TableController {
             } else {
                 processes[i][0] = null;
                 processes[i][1] = null;
-                processes[i][1] = null;
+                processes[i][2] = null;
             }
         }
         this.setTableModel(processes, this.loadedFilesViewTable, header, editable);
@@ -154,6 +155,12 @@ public class TableController {
 
         return renderer;
     }
+    
+    public String getZeros(int count){
+        String zeros = "";
+        for(int i = 0; i < count; i++) zeros += "0";
+        return zeros;
+    }
 
     public void setMainMemoryTable() {
         this.cleanMainMemoryTable();
@@ -168,7 +175,7 @@ public class TableController {
         Object data[][] = this.CreateEmptyData(3, x);
         for (int i = 0; i < x; i++) {
             if (i < memory.getMemoryRegisters().size()) {
-                data[i][0] = i;
+                data[i][0] = "0000 " + this.getZeros(4 - Integer.toString(i).length()) + Integer.toString(i);
                 data[i][1] = memory.getMemoryRegisters().get(i).getRegisterValue();
             } else {
                 data[i][0] = null;
@@ -217,7 +224,7 @@ public class TableController {
         Object data[][] = this.CreateEmptyData(3, x);
         for (int i = 0; i < x; i++) {
             if (i < memory.getMemoryRegisters().size()) {
-                data[i][0] = i;
+                data[i][0] =  "1000 " + this.getZeros(4 - Integer.toString(i).length()) + Integer.toString(i);
                 data[i][1] = memory.getMemoryRegisters().get(i).getRegisterValue();
             } else {
                 data[i][0] = null;
@@ -230,4 +237,59 @@ public class TableController {
         this.secondaryMemoryViewTable.getColumnModel().getColumn(1).setPreferredWidth(130);
     }
 
+    public void cleanProcessesTable() {
+        int rows = this.processesViewTable.getModel().getRowCount();
+        int columns = this.processesViewTable.getModel().getColumnCount();
+        this.setTableModel(this.CreateEmptyData(columns, rows), this.processesViewTable, new String[]{"Color", "ID", "Proceso", "Estado"}, new boolean[]{false, false, false, false});
+        this.processesViewTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+        this.processesViewTable.getColumnModel().getColumn(1).setPreferredWidth(1);
+        this.processesViewTable.getColumnModel().getColumn(2).setPreferredWidth(130);
+        this.processesViewTable.getColumnModel().getColumn(3).setPreferredWidth(130);
+    }
+    
+    public void setProcessesColors() {
+        ArrayList<logic.Process> queue = CPU.getCPU().getCurrentReadyProcesses();
+        ColorManager colorManager = new ColorManager();
+        ColorRenderer renderer = new ColorRenderer();
+        for (int i = 0; i < queue.size(); i++) {
+            if (queue.get(i).getProcessIsCorrect()) {
+                Color color = queue.get(i).getProcessColor();
+                renderer.setColorForCell(i, 0, color);
+            }
+        }
+        this.processesViewTable.setDefaultRenderer(Object.class, renderer);
+    }
+    
+    public void setProcessesTable() {
+        this.cleanProcessesTable();
+        ArrayList<logic.Process> queue = CPU.getCPU().getCurrentReadyProcesses();
+        String[] header = new String[]{"Color", "ID", "Proceso", "Estado"};
+        boolean editable[] = new boolean[]{false, false, false, false};
+        int rows = this.processesViewTable.getModel().getRowCount();
+        int x = queue.size();
+        if (rows > x) {
+            x = rows;
+        }
+        Object processes[][] = this.CreateEmptyData(4, x);
+        for (int i = 0; i < x; i++) {
+            if (i < queue.size()) {
+                processes[i][0] = "";
+                processes[i][1] = queue.get(i).getProcessID();
+                processes[i][2] = queue.get(i).getProcessName();
+                processes[i][3] = queue.get(i).getPCB().getProcessStatus().getRegisterValue();
+            } else {
+                processes[i][0] = null;
+                processes[i][1] = null;
+                processes[i][1] = null;
+                processes[i][3] = null;
+            }
+        }
+        this.setTableModel(processes, this.processesViewTable, header, editable);
+        this.setProcessesColors();
+        this.processesViewTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+        this.processesViewTable.getColumnModel().getColumn(1).setPreferredWidth(1);
+        this.processesViewTable.getColumnModel().getColumn(2).setPreferredWidth(130);
+        this.processesViewTable.getColumnModel().getColumn(3).setPreferredWidth(130);
+
+    }
 }

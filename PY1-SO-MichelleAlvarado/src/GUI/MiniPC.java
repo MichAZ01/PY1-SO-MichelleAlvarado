@@ -1085,29 +1085,30 @@ public class MiniPC extends javax.swing.JFrame {
 
         processesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Color", "ID", "Proceso", "Nombre del programa", "Estado"
+                "Color", "ID", "Proceso", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        processesTable.setToolTipText("");
         processesTable.setFocusable(false);
         processesTable.setRowHeight(18);
         processesTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
@@ -1116,7 +1117,6 @@ public class MiniPC extends javax.swing.JFrame {
         processesTable.getColumnModel().getColumn(1).setPreferredWidth(1);
         processesTable.getColumnModel().getColumn(2).setPreferredWidth(130);
         processesTable.getColumnModel().getColumn(3).setPreferredWidth(130);
-        processesTable.getColumnModel().getColumn(4).setPreferredWidth(130);
 
         javax.swing.GroupLayout processesContainerLayout = new javax.swing.GroupLayout(processesContainer);
         processesContainer.setLayout(processesContainerLayout);
@@ -1138,6 +1138,7 @@ public class MiniPC extends javax.swing.JFrame {
         startButton.setFont(new java.awt.Font("Bahnschrift", 0, 15)); // NOI18N
         startButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/start.png"))); // NOI18N
         startButton.setText("Iniciar");
+        startButton.setActionCommand("startExecution");
         startButton.setBorder(null);
         startButton.setBorderPainted(false);
         startButton.setContentAreaFilled(false);
@@ -1228,7 +1229,7 @@ public class MiniPC extends javax.swing.JFrame {
                 .addGroup(core1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(processCore1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(processCore1IDValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addGroup(core1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(IRRegisterCore1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IRRegisterCore1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1278,8 +1279,8 @@ public class MiniPC extends javax.swing.JFrame {
                 .addGroup(core2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(processCore2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(processCore2IDValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(core2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(2, 2, 2)
+                .addGroup(core2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(IRRegisterCore2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IRRegisterCore2Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

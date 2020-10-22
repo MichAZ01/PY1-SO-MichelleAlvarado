@@ -28,7 +28,7 @@ public class Controller implements ActionListener {
     private MiniPC view;
     public rojerusan.RSButtonIconI[] viewTabButtons;
     public TableController tableController;
-
+    public ExecuteController executeController;
     public Controller() {
         this.viewTabButtons = new rojerusan.RSButtonIconI[3];
     }
@@ -64,7 +64,7 @@ public class Controller implements ActionListener {
         this.view.ExecuteButtonTab.addActionListener(this);
         this.view.StatisticsButtonTab.addActionListener(this);
         this.view.saveProgramsButton.addActionListener(this);
-
+        this.view.startButton.addActionListener(this);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -77,6 +77,7 @@ public class Controller implements ActionListener {
         this.viewTabButtons[1] = this.view.ExecuteButtonTab;
         this.viewTabButtons[2] = this.view.StatisticsButtonTab;
         this.tableController = new TableController(this.view);
+        this.executeController = new ExecuteController(this.view);
     }
 
     /**
@@ -109,6 +110,10 @@ public class Controller implements ActionListener {
                 break;
             case "loadProgramsIntoMemory":
                 loadProgramsIntoMemoryButtonActionPerformed(view);
+                break;
+            case "startExecution":
+                startButtonActionPerformed(view);
+                break;
             default:
                 break;
         }
@@ -174,5 +179,18 @@ public class Controller implements ActionListener {
         this.tableController.setSecondaryMemoryTable();
         this.view.saveProgramsButton.setEnabled(false);
         this.view.ExecuteButtonTab.setEnabled(true);
+    }
+    
+    public void startButtonActionPerformed(javax.swing.JFrame view){
+       this.tableController.setProcessesTable();
+       this.executeController.setCPUTimeLabel();
+       this.executeController.setProcessesToExecute();
+       this.executeController.setExecuteVariables();
+       this.view.startButton.setEnabled(false);
+       this.view.nextButton.setEnabled(true);
+    }
+    
+    public void nextButtonActionPerformed(javax.swing.JFrame view){
+        
     }
 }

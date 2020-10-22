@@ -81,4 +81,12 @@ public class MemoryManager {
         processAddress += Integer.toString(register.getRegisterAddress().getMemoryIndex());
         return processAddress;
     }
+    
+    public String[] decodeAddress(String address){
+        String[] result = new String[2];
+        if(address.substring(0,1).equals("0")) result[0] = "mainMemory";
+        else result[0] = "secondaryMemory";
+        result[1] = address.substring(6);
+        return result;
+    }
 }

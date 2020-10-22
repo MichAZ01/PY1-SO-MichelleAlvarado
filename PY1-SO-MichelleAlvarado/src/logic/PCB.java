@@ -21,7 +21,7 @@ public class PCB {
     private Register BX;
     private Register CX;
     private Register DX;
-    private Register[] stack;
+    private ArrayList<Register> stack;
     private Register coreWhereIsRunning;
     private Register initTime;
     private Register timeSpent;
@@ -49,7 +49,7 @@ public class PCB {
         this.processLength = new Register();
         this.processLength.setRegisterValue(Integer.toString(processLength));
         this.processID = new Register();
-        this.stack = new Register[5];
+        this.stack = new ArrayList<Register>(5);
     }
     
     public void setPCBRegisters(ArrayList<Register> registers){
@@ -85,8 +85,8 @@ public class PCB {
         int stackFinalIndex = stackInitIndex + 4;
         int currentStackPosition = 0;
         for(int i = stackInitIndex; i <= stackFinalIndex; i++){
-            registers.get(i).setRegisterValue("-1");
-            this.stack[currentStackPosition] = registers.get(i);
+            registers.get(i).setRegisterValue("00000000");
+            this.stack.add(registers.get(i));
             currentStackPosition++;
         }
     }
@@ -114,4 +114,51 @@ public class PCB {
     public Register getCoreWhereIsRunning() {
         return coreWhereIsRunning;
     }
+
+    public Register getIOStatus() {
+        return IOStatus;
+    }
+
+    public Register getAC() {
+        return AC;
+    }
+
+    public Register getAX() {
+        return AX;
+    }
+
+    public Register getBX() {
+        return BX;
+    }
+
+    public Register getCX() {
+        return CX;
+    }
+
+    public Register getDX() {
+        return DX;
+    }
+
+    public ArrayList<Register> getStack() {
+        return stack;
+    }
+
+    public Register getInitTime() {
+        return initTime;
+    }
+
+    public Register getTimeSpent() {
+        return timeSpent;
+    }
+    
+    public void setPC(){
+        String[] instructionLocation = this.PC.getRegisterValue().split(" ");
+        String pcValue = instructionLocation[0];
+        int index = Integer.parseInt(instructionLocation[1]) + 1;
+        int zeros = 4 - Integer.toString(index).length();
+        for(int i = 0; i < zeros; i++) pcValue += "0";
+        pcValue += Integer.toString(index);
+        this.PC.setRegisterValue(pcValue);
+    }
+    
 }

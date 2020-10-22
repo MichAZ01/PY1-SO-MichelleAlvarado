@@ -687,14 +687,14 @@
                         <Component class="javax.swing.JTable" name="processesTable">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="5" rowCount="10">
+                              <Table columnCount="4" rowCount="10">
                                 <Column editable="false" title="Color" type="java.lang.Object"/>
                                 <Column editable="false" title="ID" type="java.lang.Object"/>
                                 <Column editable="false" title="Proceso" type="java.lang.Object"/>
-                                <Column editable="false" title="Nombre del programa" type="java.lang.Object"/>
                                 <Column editable="false" title="Estado" type="java.lang.Object"/>
                               </Table>
                             </Property>
+                            <Property name="toolTipText" type="java.lang.String" value=""/>
                             <Property name="focusable" type="boolean" value="false"/>
                             <Property name="rowHeight" type="int" value="18"/>
                             <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -702,7 +702,7 @@
                             </Property>
                           </Properties>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="processesTable.getColumnModel().getColumn(0).setPreferredWidth(1);&#xa;processesTable.getColumnModel().getColumn(1).setPreferredWidth(1);&#xa;processesTable.getColumnModel().getColumn(2).setPreferredWidth(130);&#xa;processesTable.getColumnModel().getColumn(3).setPreferredWidth(130);&#xa;processesTable.getColumnModel().getColumn(4).setPreferredWidth(130);"/>
+                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="processesTable.getColumnModel().getColumn(0).setPreferredWidth(1);&#xa;processesTable.getColumnModel().getColumn(1).setPreferredWidth(1);&#xa;processesTable.getColumnModel().getColumn(2).setPreferredWidth(130);&#xa;processesTable.getColumnModel().getColumn(3).setPreferredWidth(130);"/>
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
@@ -719,6 +719,7 @@
                       <Image iconType="3" name="/GUI/Images/start.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Iniciar"/>
+                    <Property name="actionCommand" type="java.lang.String" value="startExecution"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -881,7 +882,7 @@
                                       <Component id="processCore1Label" min="-2" max="-2" attributes="0"/>
                                       <Component id="processCore1IDValue" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="IRRegisterCore1Label" min="-2" max="-2" attributes="0"/>
                                       <Component id="IRRegisterCore1Value" min="-2" max="-2" attributes="0"/>
@@ -988,8 +989,8 @@
                                       <Component id="processCore2Label" min="-2" max="-2" attributes="0"/>
                                       <Component id="processCore2IDValue" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="IRRegisterCore2Label" min="-2" max="-2" attributes="0"/>
                                       <Component id="IRRegisterCore2Value" min="-2" max="-2" attributes="0"/>
                                   </Group>
