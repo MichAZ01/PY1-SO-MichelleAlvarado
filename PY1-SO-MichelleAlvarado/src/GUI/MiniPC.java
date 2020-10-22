@@ -1149,6 +1149,7 @@ public class MiniPC extends javax.swing.JFrame {
         nextButton.setFont(new java.awt.Font("Bahnschrift", 0, 15)); // NOI18N
         nextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/next.png"))); // NOI18N
         nextButton.setText("Siguiente");
+        nextButton.setActionCommand("nextExecution");
         nextButton.setBorder(null);
         nextButton.setBorderPainted(false);
         nextButton.setContentAreaFilled(false);

@@ -65,6 +65,7 @@ public class Controller implements ActionListener {
         this.view.StatisticsButtonTab.addActionListener(this);
         this.view.saveProgramsButton.addActionListener(this);
         this.view.startButton.addActionListener(this);
+        this.view.nextButton.addActionListener(this);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -114,6 +115,8 @@ public class Controller implements ActionListener {
             case "startExecution":
                 startButtonActionPerformed(view);
                 break;
+            case "nextExecution":
+                nextButtonActionPerformed(view);
             default:
                 break;
         }
@@ -148,6 +151,11 @@ public class Controller implements ActionListener {
     public void loadProgramsButtonActionPerformed(javax.swing.JFrame view) {
         this.setSelectedTab(0);
         this.view.sliderPanelContainer.setPanelSlider(this.view.WIDTH, this.view.panelLoadPrograms, RSPanelsSlider.DIRECT.RIGHT);
+        if(CPU.getCPU().getCurrentReadyProcesses().size() > 0){
+            this.tableController.resetLoadedFilesTable();
+            this.tableController.setMainMemoryTable();
+            this.tableController.setSecondaryMemoryTable();
+        }
     }
     
 
@@ -177,6 +185,7 @@ public class Controller implements ActionListener {
         CPU.getCPU().storeCurrentProcessesIntoMemory();
         this.tableController.setMainMemoryTable();
         this.tableController.setSecondaryMemoryTable();
+        this.tableController.resetLoadedFilesTable();
         this.view.saveProgramsButton.setEnabled(false);
         this.view.ExecuteButtonTab.setEnabled(true);
     }
@@ -188,9 +197,10 @@ public class Controller implements ActionListener {
        this.executeController.setExecuteVariables();
        this.view.startButton.setEnabled(false);
        this.view.nextButton.setEnabled(true);
+       CPU.getCPU().setCPUIsExecutingProcesses();
     }
     
     public void nextButtonActionPerformed(javax.swing.JFrame view){
-        
+        this.executeController.executeOneCPUTime();
     }
 }

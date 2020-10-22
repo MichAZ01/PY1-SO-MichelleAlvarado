@@ -292,4 +292,45 @@ public class TableController {
         this.processesViewTable.getColumnModel().getColumn(3).setPreferredWidth(130);
 
     }
+    
+    public void resetLoadedFilesTable() {
+        this.cleanLoadedFilesTable();
+        ArrayList<logic.Process> queue = CPU.getCPU().getLoadedProcesses();
+        String[] header = new String[]{"Color", "Nombre del programa", "Estado actual"};
+        boolean editable[] = new boolean[]{false, false, false};
+        int rows = this.loadedFilesViewTable.getModel().getRowCount();
+        int x = queue.size();
+        if (rows > x) {
+            x = rows;
+        }
+        Object processes[][] = this.CreateEmptyData(3, x);
+        for (int i = 0; i < x; i++) {
+            if (i < queue.size()) {
+                processes[i][0] = "";
+                processes[i][1] = queue.get(i).getProcessName();
+                processes[i][2] = queue.get(i).getPCB().getProcessStatus().getRegisterValue();
+            } else {
+                processes[i][0] = null;
+                processes[i][1] = null;
+                processes[i][2] = null;
+            }
+        }
+        this.setTableModel(processes, this.loadedFilesViewTable, header, editable);
+        this.resetLoadedFilesColors();
+        this.loadedFilesViewTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+        this.loadedFilesViewTable.getColumnModel().getColumn(1).setPreferredWidth(130);
+        this.loadedFilesViewTable.getColumnModel().getColumn(2).setPreferredWidth(130);
+    }
+    
+    public void resetLoadedFilesColors() {
+        ArrayList<logic.Process> queue = CPU.getCPU().getCurrentReadyProcesses();
+        ColorManager colorManager = new ColorManager();
+        ColorRenderer renderer = new ColorRenderer();
+        for (int i = 0; i < queue.size(); i++) {
+            if (queue.get(i).getProcessIsCorrect()) {
+                renderer.setColorForCell(i, 0, queue.get(i).getProcessColor());
+            }
+        }
+        this.loadedFilesViewTable.setDefaultRenderer(Object.class, renderer);
+    }
 }
