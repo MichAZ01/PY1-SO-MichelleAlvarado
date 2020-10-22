@@ -160,6 +160,7 @@
                 <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="bd" green="c2" red="6c" type="rgb"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -171,6 +172,9 @@
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ExecuteButtonTab"/>
                 <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
               </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExecuteButtonTabActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -509,6 +513,7 @@
                       <Image iconType="3" name="/GUI/Images/arrow up.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Cargar programas &#xa;en memoria"/>
+                    <Property name="actionCommand" type="java.lang.String" value="loadProgramsIntoMemory"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder roundedCorners="true">
@@ -722,7 +727,6 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Cursor de Mano"/>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
@@ -1090,8 +1094,18 @@
                                               <Component id="dxRegisterBCP1Value" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="stackBCP1ScrollPane" min="-2" pref="137" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="stackBCP1ScrollPane" min="-2" pref="137" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="instructionTimeBCP1Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                                  <Component id="instructionTimeBCP1Value" max="32767" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1144,9 +1158,9 @@
                                       <Component id="stateBCP1Value" min="-2" max="-2" attributes="0"/>
                                       <Component id="initTimeBCP1Value" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -1158,6 +1172,8 @@
                                                                           <Group type="103" groupAlignment="0" attributes="0">
                                                                               <Component id="pcRegisterBCP1Label" min="-2" max="-2" attributes="0"/>
                                                                               <Component id="pcRegisterBCP1Value" min="-2" max="-2" attributes="0"/>
+                                                                              <Component id="instructionTimeBCP1Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                              <Component id="instructionTimeBCP1Value" alignment="0" min="-2" max="-2" attributes="0"/>
                                                                           </Group>
                                                                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                                                           <Component id="acRegisterBCP1Label" min="-2" max="-2" attributes="0"/>
@@ -1187,13 +1203,16 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <EmptySpace max="32767" attributes="0"/>
                                                   <Component id="dxRegisterBCP1Value" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="stackBCP1ScrollPane" min="-2" pref="181" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                                          <Component id="stackBCP1ScrollPane" min="-2" pref="181" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace pref="84" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1440,6 +1459,25 @@
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
+                        <Component class="java.awt.Label" name="instructionTimeBCP1Label">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Bahnschrift" size="14" style="1"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Tiempo instrucci&#xf3;n:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="java.awt.Label" name="instructionTimeBCP1Value">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Bahnschrift" size="14" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="-"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -1502,23 +1540,33 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="stackBCP2ScrollPane" min="-2" pref="137" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="stackBCP2ScrollPane" min="-2" pref="137" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="ESStateBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="initTimeBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="initTimeBCP1Value1" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="ESStateBCP1Value1" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="ESStateBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="initTimeBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="instructionTimeBCP2Label" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                          <Component id="instructionTimeBCP2Value" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="initTimeBCP1Value1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="ESStateBCP1Value1" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1530,6 +1578,67 @@
                                   <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="idProcessBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="stateBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Group type="103" groupAlignment="1" attributes="0">
+                                                              <Group type="102" alignment="1" attributes="0">
+                                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                                      <Group type="102" alignment="1" attributes="0">
+                                                                          <Group type="103" groupAlignment="1" attributes="0">
+                                                                              <Component id="acRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                              <Group type="102" alignment="1" attributes="0">
+                                                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                                                          <Component id="instructionTimeBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                                          <Component id="instructionTimeBCP2Value" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                                      </Group>
+                                                                                      <Component id="pcRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                                                                  </Group>
+                                                                                  <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
+                                                                              </Group>
+                                                                          </Group>
+                                                                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <Component id="axRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <Component id="bxRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="cxRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="dxRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="idProcessBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="stateBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="pcRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                                  <Component id="acRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="axRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="bxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="cxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="dxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace pref="94" max="32767" attributes="0"/>
+                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
@@ -1543,63 +1652,11 @@
                                                   <Component id="initTimeBCP1Value1" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Component id="stackBCP2ScrollPane" min="-2" pref="181" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="idProcessBCP1Value1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="stateBCP1Value1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                                  <Group type="102" alignment="1" attributes="0">
-                                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                                          <Group type="102" alignment="1" attributes="0">
-                                                                              <Component id="pcRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
-                                                                              <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
-                                                                          </Group>
-                                                                          <Component id="acRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                                      </Group>
-                                                                      <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <Component id="axRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Component id="bxRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="cxRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="dxRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="idProcessBCP2Label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="stateBCP2Label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="pcRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                              <Component id="acRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="axRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="bxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="cxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="dxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="94" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1836,6 +1893,25 @@
                           </AuxValues>
                         </Component>
                         <Component class="java.awt.Label" name="initTimeBCP1Value1">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Bahnschrift" size="14" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="-"/>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="java.awt.Label" name="instructionTimeBCP2Label">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Bahnschrift" size="14" style="1"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Tiempo instrucci&#xf3;n:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="java.awt.Label" name="instructionTimeBCP2Value">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Bahnschrift" size="14" style="0"/>

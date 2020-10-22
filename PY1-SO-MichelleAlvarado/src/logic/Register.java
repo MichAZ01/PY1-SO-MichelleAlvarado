@@ -14,7 +14,8 @@ public class Register {
     private Address registerAddress;
     
     public Register(){
-        this.registerValue = "";
+        this.registerValue = "-";
+        this.registerAddress = new Address();
     }
 
     public String getRegisterValue() {

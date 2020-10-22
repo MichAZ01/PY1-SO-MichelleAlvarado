@@ -5,16 +5,19 @@
  */
 package logic;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Michelle Alvarado
  */
 public class Memory {
     private int memoryLength;
-    private Register[] memoryRegisters[];
+    private ArrayList<Register> memoryRegisters;
+    private int freeSpaces;
     
     public Memory(){
-        
+        this.memoryRegisters = new ArrayList<Register>();
     }
 
     public int getMemoryLength() {
@@ -25,12 +28,20 @@ public class Memory {
         this.memoryLength = memoryLength;
     }
 
-    public Register[][] getMemoryRegisters() {
+    public ArrayList<Register> getMemoryRegisters() {
         return memoryRegisters;
     }
 
-    public void setMemoryRegisters(Register[][] memoryRegisters) {
+    public void setMemoryRegisters(ArrayList<Register> memoryRegisters) {
         this.memoryRegisters = memoryRegisters;
+    }
+
+    public int getFreeSpaces() {
+        return freeSpaces;
+    }
+
+    public void setFreeSpaces(int freeSpaces) {
+        this.freeSpaces = freeSpaces;
     }
     
     

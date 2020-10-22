@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import logic.CPU;
+import logic.Memory;
 import rojerusan.RSPanelsSlider;
 
 /**
@@ -62,6 +63,7 @@ public class Controller implements ActionListener {
         this.view.loadProgramsButtonTab.addActionListener(this);
         this.view.ExecuteButtonTab.addActionListener(this);
         this.view.StatisticsButtonTab.addActionListener(this);
+        this.view.saveProgramsButton.addActionListener(this);
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -105,6 +107,8 @@ public class Controller implements ActionListener {
             case "openStatistics":
                 openStatisticsButtonActionPerformed(view);
                 break;
+            case "loadProgramsIntoMemory":
+                loadProgramsIntoMemoryButtonActionPerformed(view);
             default:
                 break;
         }
@@ -162,5 +166,13 @@ public class Controller implements ActionListener {
                 button.setSelected(false);
             }
         }
+    }
+    
+    public void loadProgramsIntoMemoryButtonActionPerformed(javax.swing.JFrame view){
+        CPU.getCPU().storeCurrentProcessesIntoMemory();
+        this.tableController.setMainMemoryTable();
+        this.tableController.setSecondaryMemoryTable();
+        this.view.saveProgramsButton.setEnabled(false);
+        this.view.ExecuteButtonTab.setEnabled(true);
     }
 }

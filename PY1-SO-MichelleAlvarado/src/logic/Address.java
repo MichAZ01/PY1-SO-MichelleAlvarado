@@ -11,10 +11,11 @@ package logic;
  */
 public class Address {
     private String memoryType;
-    private int memoryAddress;
+    private int memoryIndex;
+    private String memoryAddress;
     
     public Address(){
-        
+        this.memoryAddress = "";
     }
 
     public String getMemoryType() {
@@ -25,13 +26,19 @@ public class Address {
         this.memoryType = memoryType;
     }
 
-    public int getMemoryAddress() {
+    public int getMemoryIndex() {
+        return memoryIndex;
+    }
+
+    public void setMemoryIndex(int memoryIndex) {
+        this.memoryIndex = memoryIndex;
+    }
+
+    public String getMemoryAddress() {
         return memoryAddress;
     }
 
-    public void setMemoryAddress(int memoryAddress) {
+    public void setMemoryAddress(String memoryAddress) {
         this.memoryAddress = memoryAddress;
     }
-    
-    
 }

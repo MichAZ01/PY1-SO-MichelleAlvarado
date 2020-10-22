@@ -5,6 +5,8 @@
  */
 package logic;
 
+import java.util.ArrayList;
+
 /**
  * 19
  * @author Michelle Alvarado
@@ -25,142 +27,91 @@ public class PCB {
     private Register timeSpent;
     private Register initProgramIndex;
     private Register processLength;
+    private static final int processIDIndex = 0;
+    private static final int processStatusIndex = 1;
+    private static final int IOStatusIndex = 2;
+    private static final int PCIndex = 3;
+    private static final int ACIndex = 4;
+    private static final int AXIndex = 5;
+    private static final int BXIndex = 6;
+    private static final int CXIndex = 7;
+    private static final int DXIndex = 8;
+    private static final int stackInitIndex = 9;
+    private static final int coreWhereIsRunningIndex = 14;
+    private static final int initTimeIndex = 15;
+    private static final int timeSpentIndex = 16;
+    private static final int initProgramIndexIndex = 17;
+    private static final int processLengthIndex = 18;
     
-    public PCB(){
-        this.processID = new Register();
+    public PCB(String processStatus, int processLength){
         this.processStatus = new Register();
-        this.IOStatus = new Register();
-        this.PC = new Register();
-        this.AC = new Register();
-        this.AX = new Register();
-        this.BX = new Register();
-        this.CX = new Register();
-        this.DX = new Register();
-        this.stack = new Register[5];
-        this.coreWhereIsRunning = new Register();
-        this.initTime = new Register();
-        this.timeSpent = new Register();
-        this.initProgramIndex = new Register();
+        this.processStatus.setRegisterValue(processStatus);
         this.processLength = new Register();
+        this.processLength.setRegisterValue(Integer.toString(processLength));
+        this.processID = new Register();
+        this.stack = new Register[5];
     }
-
-    public Register getProcessID() {
-        return processID;
+    
+    public void setPCBRegisters(ArrayList<Register> registers){
+        registers.get(processIDIndex).setRegisterValue(this.processID.getRegisterValue());
+        registers.get(processStatusIndex).setRegisterValue(this.processStatus.getRegisterValue());
+        registers.get(processLengthIndex).setRegisterValue(this.processLength.getRegisterValue());
+        this.processID = registers.get(processIDIndex);
+        this.processStatus = registers.get(processStatusIndex);
+        this.IOStatus = registers.get(IOStatusIndex);
+        this.IOStatus.setRegisterValue("0000");
+        this.PC = registers.get(PCIndex);
+        this.AC = registers.get(ACIndex);
+        this.AC.setRegisterValue("0");
+        this.AX = registers.get(AXIndex);
+        this.AX.setRegisterValue("0");
+        this.BX = registers.get(BXIndex);
+        this.BX.setRegisterValue("0");
+        this.CX = registers.get(CXIndex);
+        this.CX.setRegisterValue("0");
+        this.DX = registers.get(DXIndex);
+        this.DX.setRegisterValue("0");
+        this.storeStackRegisters(registers);
+        this.coreWhereIsRunning = registers.get(coreWhereIsRunningIndex);
+        this.initTime = registers.get(initTimeIndex);
+        this.initTime.setRegisterValue("-1");
+        this.timeSpent = registers.get(timeSpentIndex);
+        this.timeSpent.setRegisterValue("0");
+        this.initProgramIndex = registers.get(initProgramIndexIndex);
+        this.processLength = registers.get(processLengthIndex);
     }
-
-    public void setProcessID(Register processID) {
-        this.processID = processID;
+    
+    public void storeStackRegisters(ArrayList<Register> registers){
+        int stackFinalIndex = stackInitIndex + 4;
+        int currentStackPosition = 0;
+        for(int i = stackInitIndex; i <= stackFinalIndex; i++){
+            registers.get(i).setRegisterValue("-1");
+            this.stack[currentStackPosition] = registers.get(i);
+            currentStackPosition++;
+        }
     }
 
     public Register getProcessStatus() {
         return processStatus;
     }
 
-    public void setProcessStatus(Register processStatus) {
-        this.processStatus = processStatus;
+    public Register getProcessLength() {
+        return processLength;
     }
 
-    public Register getIOStatus() {
-        return IOStatus;
-    }
-
-    public void setIOStatus(Register IOStatus) {
-        this.IOStatus = IOStatus;
-    }
-
-    public Register getPC() {
-        return PC;
-    }
-
-    public void setPC(Register PC) {
-        this.PC = PC;
-    }
-
-    public Register getAC() {
-        return AC;
-    }
-
-    public void setAC(Register AC) {
-        this.AC = AC;
-    }
-
-    public Register getAX() {
-        return AX;
-    }
-
-    public void setAX(Register AX) {
-        this.AX = AX;
-    }
-
-    public Register getBX() {
-        return BX;
-    }
-
-    public void setBX(Register BX) {
-        this.BX = BX;
-    }
-
-    public Register getCX() {
-        return CX;
-    }
-
-    public void setCX(Register CX) {
-        this.CX = CX;
-    }
-
-    public Register getDX() {
-        return DX;
-    }
-
-    public void setDX(Register DX) {
-        this.DX = DX;
-    }
-
-    public Register[] getStack() {
-        return stack;
-    }
-
-    public void setStack(Register[] stack) {
-        this.stack = stack;
-    }
-
-    public Register getCoreWhereIsRunning() {
-        return coreWhereIsRunning;
-    }
-
-    public void setCoreWhereIsRunning(Register coreWhereIsRunning) {
-        this.coreWhereIsRunning = coreWhereIsRunning;
-    }
-
-    public Register getInitTime() {
-        return initTime;
-    }
-
-    public void setInitTime(Register initTime) {
-        this.initTime = initTime;
-    }
-
-    public Register getTimeSpent() {
-        return timeSpent;
-    }
-
-    public void setTimeSpent(Register timeSpent) {
-        this.timeSpent = timeSpent;
+    public Register getProcessID() {
+        return processID;
     }
 
     public Register getInitProgramIndex() {
         return initProgramIndex;
     }
 
-    public void setInitProgramIndex(Register initProgramIndex) {
-        this.initProgramIndex = initProgramIndex;
+    public Register getPC() {
+        return PC;
     }
 
-    public Register getProcessLength() {
-        return processLength;
-    }
-
-    public void setProcessLength(Register processLength) {
-        this.processLength = processLength;
+    public Register getCoreWhereIsRunning() {
+        return coreWhereIsRunning;
     }
 }

@@ -97,6 +97,8 @@ public class MiniPC extends javax.swing.JFrame {
         dxRegisterBCP1Value = new java.awt.Label();
         ESStateBCP1Value = new java.awt.Label();
         initTimeBCP1Value = new java.awt.Label();
+        instructionTimeBCP1Label = new java.awt.Label();
+        instructionTimeBCP1Value = new java.awt.Label();
         BCP2ScrollPane = new javax.swing.JScrollPane();
         BCP2Panel = new javax.swing.JPanel();
         BCPprocessCore2Label = new java.awt.Label();
@@ -123,6 +125,8 @@ public class MiniPC extends javax.swing.JFrame {
         dxRegisterBCP1Value1 = new java.awt.Label();
         ESStateBCP1Value1 = new java.awt.Label();
         initTimeBCP1Value1 = new java.awt.Label();
+        instructionTimeBCP2Label = new java.awt.Label();
+        instructionTimeBCP2Value = new java.awt.Label();
         jPanel2 = new javax.swing.JPanel();
         cpuTimeLabel = new java.awt.Label();
         cpuTimeValue = new java.awt.Label();
@@ -159,10 +163,16 @@ public class MiniPC extends javax.swing.JFrame {
         ExecuteButtonTab.setActionCommand("openExecution");
         ExecuteButtonTab.setBorderPainted(false);
         ExecuteButtonTab.setColorHover(new java.awt.Color(108, 194, 189));
+        ExecuteButtonTab.setEnabled(false);
         ExecuteButtonTab.setFocusPainted(false);
         ExecuteButtonTab.setFocusable(false);
         ExecuteButtonTab.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
         ExecuteButtonTab.setName("ExecuteButtonTab"); // NOI18N
+        ExecuteButtonTab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExecuteButtonTabActionPerformed(evt);
+            }
+        });
 
         StatisticsButtonTab.setBackground(new java.awt.Color(90, 129, 158));
         StatisticsButtonTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/statistics.png"))); // NOI18N
@@ -1000,6 +1010,7 @@ public class MiniPC extends javax.swing.JFrame {
         saveProgramsButton.setFont(new java.awt.Font("Bahnschrift", 1, 15)); // NOI18N
         saveProgramsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/arrow up.png"))); // NOI18N
         saveProgramsButton.setText("Cargar programas \nen memoria");
+        saveProgramsButton.setActionCommand("loadProgramsIntoMemory");
         saveProgramsButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         saveProgramsButton.setContentAreaFilled(false);
         saveProgramsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1131,7 +1142,6 @@ public class MiniPC extends javax.swing.JFrame {
         startButton.setBorderPainted(false);
         startButton.setContentAreaFilled(false);
         startButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        startButton.setEnabled(false);
         startButton.setFocusPainted(false);
         startButton.setFocusable(false);
 
@@ -1370,6 +1380,12 @@ public class MiniPC extends javax.swing.JFrame {
         initTimeBCP1Value.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         initTimeBCP1Value.setText("-");
 
+        instructionTimeBCP1Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        instructionTimeBCP1Label.setText("Tiempo instrucción:");
+
+        instructionTimeBCP1Value.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        instructionTimeBCP1Value.setText("-");
+
         javax.swing.GroupLayout panelBCP1Layout = new javax.swing.GroupLayout(panelBCP1);
         panelBCP1.setLayout(panelBCP1Layout);
         panelBCP1Layout.setHorizontalGroup(
@@ -1402,8 +1418,15 @@ public class MiniPC extends javax.swing.JFrame {
                             .addComponent(cxRegisterBCP1Value, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dxRegisterBCP1Value, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stackBCP1ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110))
+                        .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBCP1Layout.createSequentialGroup()
+                                .addComponent(stackBCP1ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(110, 110, 110))
+                            .addGroup(panelBCP1Layout.createSequentialGroup()
+                                .addComponent(instructionTimeBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(instructionTimeBCP1Value, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))
                     .addGroup(panelBCP1Layout.createSequentialGroup()
                         .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(idProcessBCP1Value, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
@@ -1442,9 +1465,9 @@ public class MiniPC extends javax.swing.JFrame {
                     .addComponent(initTimeBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stateBCP1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(initTimeBCP1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBCP1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelBCP1Layout.createSequentialGroup()
                                 .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1455,7 +1478,9 @@ public class MiniPC extends javax.swing.JFrame {
                                                     .addGroup(panelBCP1Layout.createSequentialGroup()
                                                         .addGroup(panelBCP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(pcRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(pcRegisterBCP1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addComponent(pcRegisterBCP1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(instructionTimeBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(instructionTimeBCP1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGap(17, 17, 17)
                                                         .addComponent(acRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(acRegisterBCP1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1474,10 +1499,12 @@ public class MiniPC extends javax.swing.JFrame {
                                 .addComponent(dxRegisterBCP1Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBCP1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dxRegisterBCP1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2))))
-                    .addComponent(stackBCP1ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                                .addComponent(dxRegisterBCP1Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBCP1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addComponent(stackBCP1ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
 
         BCP1ScrollPane.setViewportView(panelBCP1);
@@ -1573,6 +1600,12 @@ public class MiniPC extends javax.swing.JFrame {
         initTimeBCP1Value1.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         initTimeBCP1Value1.setText("-");
 
+        instructionTimeBCP2Label.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
+        instructionTimeBCP2Label.setText("Tiempo instrucción:");
+
+        instructionTimeBCP2Value.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        instructionTimeBCP2Value.setText("-");
+
         javax.swing.GroupLayout BCP2PanelLayout = new javax.swing.GroupLayout(BCP2Panel);
         BCP2Panel.setLayout(BCP2PanelLayout);
         BCP2PanelLayout.setHorizontalGroup(
@@ -1611,17 +1644,24 @@ public class MiniPC extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BCP2PanelLayout.createSequentialGroup()
-                        .addComponent(stackBCP2ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111))
+                        .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BCP2PanelLayout.createSequentialGroup()
+                                .addComponent(stackBCP2ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(111, 111, 111))
+                            .addGroup(BCP2PanelLayout.createSequentialGroup()
+                                .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ESStateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(initTimeBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(initTimeBCP1Value1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ESStateBCP1Value1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(12, 12, 12))
                     .addGroup(BCP2PanelLayout.createSequentialGroup()
-                        .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ESStateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(initTimeBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(initTimeBCP1Value1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ESStateBCP1Value1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(12, 12, 12))
+                        .addComponent(instructionTimeBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(instructionTimeBCP2Value, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         BCP2PanelLayout.setVerticalGroup(
             BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1632,6 +1672,53 @@ public class MiniPC extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BCP2PanelLayout.createSequentialGroup()
+                        .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(BCP2PanelLayout.createSequentialGroup()
+                                .addComponent(idProcessBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(stateBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(BCP2PanelLayout.createSequentialGroup()
+                                        .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(BCP2PanelLayout.createSequentialGroup()
+                                                .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(BCP2PanelLayout.createSequentialGroup()
+                                                        .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                            .addComponent(acRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGroup(BCP2PanelLayout.createSequentialGroup()
+                                                                .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                    .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(instructionTimeBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(instructionTimeBCP2Value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                    .addComponent(pcRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(38, 38, 38)))
+                                                        .addGap(31, 31, 31))
+                                                    .addComponent(axRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(31, 31, 31))
+                                            .addComponent(bxRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(31, 31, 31))
+                                    .addComponent(cxRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dxRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(BCP2PanelLayout.createSequentialGroup()
+                                .addComponent(idProcessBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(stateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pcRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addComponent(acRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(axRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(94, Short.MAX_VALUE))
+                    .addGroup(BCP2PanelLayout.createSequentialGroup()
                         .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BCP2PanelLayout.createSequentialGroup()
                                 .addComponent(ESStateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1641,50 +1728,9 @@ public class MiniPC extends javax.swing.JFrame {
                                 .addComponent(ESStateBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(initTimeBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stackBCP2ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(BCP2PanelLayout.createSequentialGroup()
-                            .addComponent(idProcessBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(stateBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(BCP2PanelLayout.createSequentialGroup()
-                                    .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(BCP2PanelLayout.createSequentialGroup()
-                                            .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(BCP2PanelLayout.createSequentialGroup()
-                                                    .addGroup(BCP2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(BCP2PanelLayout.createSequentialGroup()
-                                                            .addComponent(pcRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addGap(38, 38, 38))
-                                                        .addComponent(acRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(31, 31, 31))
-                                                .addComponent(axRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(31, 31, 31))
-                                        .addComponent(bxRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(31, 31, 31))
-                                .addComponent(cxRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dxRegisterBCP1Value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(BCP2PanelLayout.createSequentialGroup()
-                            .addComponent(idProcessBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(stateBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(pcRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(17, 17, 17)
-                            .addComponent(acRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(axRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(bxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(dxRegisterBCP2Label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(94, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stackBCP2ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
         );
 
         BCP2ScrollPane.setViewportView(BCP2Panel);
@@ -1841,6 +1887,10 @@ public class MiniPC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_keyboardActionPerformed
 
+    private void ExecuteButtonTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteButtonTabActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExecuteButtonTabActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1930,6 +1980,10 @@ public class MiniPC extends javax.swing.JFrame {
     public java.awt.Label initTimeBCP1Value;
     public java.awt.Label initTimeBCP1Value1;
     private java.awt.Label initTimeBCP2Label;
+    private java.awt.Label instructionTimeBCP1Label;
+    public java.awt.Label instructionTimeBCP1Value;
+    private java.awt.Label instructionTimeBCP2Label;
+    public java.awt.Label instructionTimeBCP2Value;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

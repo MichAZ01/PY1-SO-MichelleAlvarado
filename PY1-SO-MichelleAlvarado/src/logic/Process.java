@@ -5,25 +5,33 @@
  */
 package logic;
 
+import java.awt.Color;
+import java.util.ArrayList;
+
 /**
  * this class contains the attributes and accesor methods that allowed manage the instructions of a process
  * @author Michelle Alvarado
  */
 public class Process {
-    private Register[] processInstructions;
+    private ArrayList<Register> processInstructions;
     private int processSize;
     private PCB PCB;
-    private String[] processColors;
     private boolean processIsCorrect;
     private String processName;
+    private String processID;
+    private int PCBSize;
+    private String initTime;
+    private String finalTime;
+    private Color processColor;
     
     public Process(){
         this.processInstructions = null;
         this.processSize = 0;
-        this.PCB = new PCB();
-        this.processColors = new String[3];
         this.processIsCorrect = false;
         this.processName = "";
+        this.PCBSize = 19;
+        this.initTime = "";
+        this.finalTime = "";
     }
     
     public String getProcessName() {
@@ -34,19 +42,27 @@ public class Process {
         this.processName = processName;
     }
 
-    public Register[] getProcessInstructions() {
+    public ArrayList<Register> getProcessInstructions() {
         return processInstructions;
     }
 
     public void setProcessInstructions(String[] processInstructions) {
         this.processSize = processInstructions.length;
-        this.processInstructions = new Register[this.processSize];
+        this.processInstructions = new ArrayList<Register>();
         for(int i = 0; i < this.processSize; i++){
             Register newRegisterInstruction = new Register();
             newRegisterInstruction.setRegisterValue(processInstructions[i]);
-            this.processInstructions[i] = newRegisterInstruction;
+            this.processInstructions.add(newRegisterInstruction);
         }
-        this.PCB.getProcessLength().setRegisterValue(Integer.toString(this.processSize));
+    }
+
+    public void setProcessInstructions(ArrayList<Register> processRegisterInstructions) {
+        for(int i = 0; i < processRegisterInstructions.size(); i++){
+            processRegisterInstructions.get(i).setRegisterValue(this.processInstructions.get(i).getRegisterValue());
+            //System.out.println(this.processInstructions.get(i).getRegisterValue());
+            this.processInstructions.set(i, processRegisterInstructions.get(i));
+            
+        }
     }
 
     public int getprocessSize() {
@@ -61,14 +77,6 @@ public class Process {
         this.PCB = PCB;
     }
 
-    public String[] getprocessColors() {
-        return processColors;
-    }
-
-    public void setProcessColors(String[] processColors) {
-        this.processColors = processColors;
-    }
-
     public boolean getProcessIsCorrect() {
         return processIsCorrect;
     }
@@ -76,5 +84,40 @@ public class Process {
     public void setProcessIsCorrect() {
         this.processIsCorrect = !this.processIsCorrect;
     }
+
+    public String getProcessID() {
+        return processID;
+    }
+
+    public void setProcessID(String processID) {
+        this.processID = processID;
+    }
     
+    public int getPCBSize(){
+        return this.PCBSize;
+    }
+
+    public String getInitTime() {
+        return initTime;
+    }
+
+    public void setInitTime(String initTime) {
+        this.initTime = initTime;
+    }
+
+    public String getFinalTime() {
+        return finalTime;
+    }
+
+    public void setFinalTime(String finalTime) {
+        this.finalTime = finalTime;
+    }
+
+    public Color getProcessColor() {
+        return processColor;
+    }
+
+    public void setProcessColor(Color processColor) {
+        this.processColor = processColor;
+    }
 }

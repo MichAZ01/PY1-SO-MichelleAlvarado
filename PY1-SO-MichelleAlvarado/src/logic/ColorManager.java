@@ -6,6 +6,7 @@
 package logic;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -13,22 +14,22 @@ import java.util.Random;
  * @author Michelle Alvarado
  */
 public class ColorManager {
-    public String[] usedColors;
+    public ArrayList<String> usedColors;
 
     public ColorManager() {
         this.setUsedColors();
     }
     
     public void setUsedColors(){
-        this.usedColors = new String[2000];
+        this.usedColors = new ArrayList<String>();
     }
 
-    public boolean StringExistsInArray(String string, String[] array) {
+    public boolean StringExistsInArray(String string, ArrayList<String> array) {
         Boolean exists = false;
-        int size = array.length;
+        int size = array.size();
         String currentString = null;
         for (int i = 0; i < size; i++) {
-            currentString = array[i];
+            currentString = array.get(i);
             if (currentString == null) {
                 break;
             } else if (string.equals(currentString)) {
@@ -49,19 +50,19 @@ public class ColorManager {
             final Color color = Color.getHSBColor(hue, saturation, luminance);
             if (!this.StringExistsInArray(color.toString(), this.usedColors) && hasNoCodeEqualy(color.toString(), this.usedColors, currentIndex)) {
                 newColor = color;
-                this.usedColors[currentIndex] = newColor.toString();
+                this.usedColors.add(newColor.toString());
             }
         }
         return newColor;
     }
 
-    public boolean hasNoCodeEqualy(String color, String[] usedColors, int currentIndex) {
+    public boolean hasNoCodeEqualy(String color, ArrayList<String> usedColors, int currentIndex) {
         boolean hasOnlyOne = true;
         String[] previousColorRGB = null;
         String[] currentColorRGB = null;
         int countCoincidences = 0;
         if (currentIndex > 0) {
-            String previousColor = usedColors[currentIndex - 1];
+            String previousColor = usedColors.get(currentIndex - 1);
             if (previousColor != null) {
                 previousColorRGB = this.getRGBCodes(previousColor);
                 currentColorRGB = this.getRGBCodes(color);
