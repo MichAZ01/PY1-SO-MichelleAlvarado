@@ -94,6 +94,7 @@ public class InstructionManager {
             case "MOV":
                 break;
             case "ADD":
+                result = this.executeADDInstruction(currentPCB, instruction);
                 break;
             case "SUB":
                 break;
@@ -182,7 +183,6 @@ public class InstructionManager {
     
     public String executePARAMInstruction(PCB currentPCB, String instruction){
         String result = "";
-        
         String[] instructionParts = instruction.split(",");
         String param1 = instructionParts[0].split(" ")[1];
         String[] params = new String[3];
@@ -195,6 +195,8 @@ public class InstructionManager {
             params[1] = instructionParts[1].trim();
         }
         
+        for(int i = 0; i < params.length; i++) System.out.println(params[i]);
+        
         if(currentPCB.getStackAvailableSpace() >= params.length){
             currentPCB.storeParamsIntoStack(params);
         }
@@ -205,5 +207,30 @@ public class InstructionManager {
         return result;
     }
     
+    public String executeADDInstruction(PCB currentPCB, String instruction){
+        String register = instruction.split(" ")[1];
+        switch(register){
+            case "AX":
+                currentPCB.getAC().setRegisterValue(Integer.toString(Integer.parseInt(currentPCB.getAC().getRegisterValue()) + Integer.parseInt(currentPCB.getAX().getRegisterValue())));
+                break;
+            case "BX":
+                currentPCB.getAC().setRegisterValue(Integer.toString(Integer.parseInt(currentPCB.getAC().getRegisterValue()) + Integer.parseInt(currentPCB.getBX().getRegisterValue())));
+                break;
+            case "CX":
+                currentPCB.getAC().setRegisterValue(Integer.toString(Integer.parseInt(currentPCB.getAC().getRegisterValue()) + Integer.parseInt(currentPCB.getCX().getRegisterValue())));
+                break;
+            case "DX":
+                currentPCB.getAC().setRegisterValue(Integer.toString(Integer.parseInt(currentPCB.getAC().getRegisterValue()) + Integer.parseInt(currentPCB.getDX().getRegisterValue())));
+                break;
+            default:
+                break;
+        }
+        
+        return "";
+    }
     
+    public String executeMOVInstruction(PCB currentPCB, String instruction){
+        
+        return "";
+    }
 }

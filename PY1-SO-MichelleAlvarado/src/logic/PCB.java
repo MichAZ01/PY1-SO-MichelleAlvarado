@@ -164,7 +164,7 @@ public class PCB {
     public int getStackAvailableSpace(){
         int space = 0;
         for(int i = 0; i < this.stack.size(); i++){
-            if(this.stack.get(i).equals("00000000")) space += 1;
+            if(this.stack.get(i).getRegisterValue().equals("00000000")) space += 1;
         }
         
         return space;
@@ -172,7 +172,7 @@ public class PCB {
     
     public void storeParamsIntoStack(String[] params){
         for(int i = 0; i < this.stack.size(); i++){
-            if(this.stack.get(i).equals("00000000")){
+            if(this.stack.get(i).getRegisterValue().equals("00000000")){
                 int x = i;
                 for(int j = 0; j < params.length; j++){
                     this.stack.get(x).setRegisterValue(params[j]);
