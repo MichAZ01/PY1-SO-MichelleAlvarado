@@ -1506,32 +1506,27 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="acRegisterBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pcRegisterBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="dxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                              <Component id="cxRegisterBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="bxRegisterBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="axRegisterBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="acRegisterBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="pcRegisterBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="dxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                          <Component id="bxRegisterBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="axRegisterBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="idProcessBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="stateBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="pcRegisterBCP1Value1" max="32767" attributes="0"/>
+                                      <Component id="cxRegisterBCP1Value1" max="32767" attributes="0"/>
                                       <Component id="dxRegisterBCP1Value1" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="pcRegisterBCP1Value1" alignment="0" max="32767" attributes="0"/>
                                               <Component id="acRegisterBCP1Value1" alignment="0" max="32767" attributes="0"/>
                                               <Component id="axRegisterBCP1Value1" alignment="1" max="32767" attributes="0"/>
                                               <Component id="bxRegisterBCP1Value1" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="cxRegisterBCP1Value1" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                       </Group>
@@ -1581,67 +1576,6 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="idProcessBCP1Value1" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="stateBCP1Value1" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Group type="103" groupAlignment="1" attributes="0">
-                                                              <Group type="102" alignment="1" attributes="0">
-                                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                                      <Group type="102" alignment="1" attributes="0">
-                                                                          <Group type="103" groupAlignment="1" attributes="0">
-                                                                              <Component id="acRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                                              <Group type="102" alignment="1" attributes="0">
-                                                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                                                          <Component id="instructionTimeBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                                          <Component id="instructionTimeBCP2Value" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                                      </Group>
-                                                                                      <Component id="pcRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
-                                                                                  </Group>
-                                                                                  <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
-                                                                              </Group>
-                                                                          </Group>
-                                                                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                                                                      </Group>
-                                                                      <Component id="axRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Component id="bxRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="cxRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="dxRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="idProcessBCP2Label" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="stateBCP2Label" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="pcRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                                  <Component id="acRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="axRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="bxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="cxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="dxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace pref="94" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <Component id="ESStateBCP2Label" min="-2" max="-2" attributes="0"/>
@@ -1657,6 +1591,59 @@
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="stackBCP2ScrollPane" min="-2" pref="181" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="idProcessBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="stateBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                                  <Component id="pcRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                                  <Component id="acRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="idProcessBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="stateBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="instructionTimeBCP2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="instructionTimeBCP2Value" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                                          <Component id="pcRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="acRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="axRegisterBCP2Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="axRegisterBCP1Value1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="bxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                              <Component id="bxRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="cxRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="dxRegisterBCP1Value1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="cxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="dxRegisterBCP2Label" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>

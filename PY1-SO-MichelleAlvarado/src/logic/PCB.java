@@ -182,4 +182,25 @@ public class PCB {
             }
         }
     }
+    
+    public String POPStack(){
+        String result = "";
+        for(int i = 4; i >= 0; i--){
+            if(!this.stack.get(i).getRegisterValue().equals("00000000")){
+                result = this.stack.get(i).getRegisterValue();
+                this.stack.get(i).setRegisterValue("00000000");
+                break;
+            }
+        }
+        return result;
+    }
+    
+    public void PUSHStack(String value){
+        for(int i = 0; i < this.stack.size(); i++){
+            if(this.stack.get(i).getRegisterValue().equals("00000000")){
+                this.stack.get(i).setRegisterValue(value);
+                break;
+            }
+        }
+    }
 }

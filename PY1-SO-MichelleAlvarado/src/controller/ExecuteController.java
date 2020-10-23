@@ -8,6 +8,7 @@ package controller;
 import GUI.MiniPC;
 import java.awt.Label;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import logic.CPU;
 import logic.Core;
@@ -29,7 +30,7 @@ public class ExecuteController {
     int currentInstructionPCB1RemainingTime;
     int currentInstructionPCB2RemainingTime;
     InstructionManager instructionManager;
-    
+
     public ExecuteController(MiniPC viewP) {
         this.view = viewP;
         this.currentProcessPCB1 = null;
@@ -104,7 +105,7 @@ public class ExecuteController {
 
     public void setExecuteVariables() {
         this.setCPUTimeLabel();
-        if(this.currentProcessPCB1 != null){
+        if (this.currentProcessPCB1 != null) {
             CPU.getCPU().getCore1().getCurrentProcessID().setRegisterValue(this.currentProcessPCB1.getProcessID().getRegisterValue());
             CPU.getCPU().getCore1().getIRRegister().setRegisterValue(this.getInstructionForIRRegister(this.currentProcessPCB1));
             this.currentProcessPCB1.getInitTime().setRegisterValue(Integer.toString(CPU.getCPU().getCPUCurrentTime()));
@@ -114,7 +115,7 @@ public class ExecuteController {
             this.setBCP1LabelValues(this.currentProcessPCB1);
             this.setBCPStackLabelValues(this.currentProcessPCB1.getStack(), this.view.stackBCP1);
         }
-        if(this.currentProcessPCB2 != null){
+        if (this.currentProcessPCB2 != null) {
             CPU.getCPU().getCore2().getCurrentProcessID().setRegisterValue(this.currentProcessPCB2.getProcessID().getRegisterValue());
             CPU.getCPU().getCore2().getIRRegister().setRegisterValue(this.getInstructionForIRRegister(this.currentProcessPCB2));
             this.currentProcessPCB2.getInitTime().setRegisterValue(Integer.toString(CPU.getCPU().getCPUCurrentTime()));
@@ -145,43 +146,42 @@ public class ExecuteController {
 
         return processesToExecute;
     }
-    
-    public PCB getProcessByCore(String coreName){
+
+    public PCB getProcessByCore(String coreName) {
         PCB processPCB = null;
         ArrayList<PCB> readyQueue = CPU.getCPU().getReadyProcessesQueue();
-        for(int i = 0; i < readyQueue.size(); i++){
+        for (int i = 0; i < readyQueue.size(); i++) {
             PCB currentReadyPCB = readyQueue.get(i);
-            if(currentReadyPCB.getCoreWhereIsRunning().getRegisterValue().equals(coreName)){
+            if (currentReadyPCB.getCoreWhereIsRunning().getRegisterValue().equals(coreName)) {
                 processPCB = currentReadyPCB;
                 break;
             }
         }
         return processPCB;
     }
-    
-    public void assignProcessToCore(PCB[] processesToExecute){
+
+    public void assignProcessToCore(PCB[] processesToExecute) {
         PCB process1PCB = processesToExecute[0];
-        PCB process2PCB = processesToExecute[1];        
-        if(process1PCB != null) {
+        PCB process2PCB = processesToExecute[1];
+        if (process1PCB != null) {
             process1PCB.getProcessStatus().setRegisterValue("Ejecutando");
             process1PCB.getInitTime().setRegisterValue(Integer.toString(CPU.getCPU().getCPUCurrentTime()));
         }
-        if(process2PCB != null) {
+        if (process2PCB != null) {
             process2PCB.getProcessStatus().setRegisterValue("Ejecutando");
             process2PCB.getInitTime().setRegisterValue(Integer.toString(CPU.getCPU().getCPUCurrentTime()));
         }
-        
-        if(process1PCB != null){
-            if(process1PCB.getCoreWhereIsRunning().getRegisterValue().equals("Núcleo 1")){
+
+        if (process1PCB != null) {
+            if (process1PCB.getCoreWhereIsRunning().getRegisterValue().equals("Núcleo 1")) {
                 this.currentProcessPCB1 = process1PCB;
                 this.currentProcessPCB2 = process2PCB;
             } else {
                 this.currentProcessPCB2 = process1PCB;
                 this.currentProcessPCB1 = process2PCB;
             }
-        }
-        else if(process2PCB != null){
-            if(process2PCB.getCoreWhereIsRunning().getRegisterValue().equals("Núcleo 1")){
+        } else if (process2PCB != null) {
+            if (process2PCB.getCoreWhereIsRunning().getRegisterValue().equals("Núcleo 1")) {
                 this.currentProcessPCB2 = process1PCB;
                 this.currentProcessPCB1 = process2PCB;
             } else {
@@ -197,130 +197,136 @@ public class ExecuteController {
             if (this.currentProcessPCB1 == null && this.currentProcessPCB2 == null) {
                 PCB[] processesToExecute = this.getNextProcessesToExecute();
                 this.assignProcessToCore(processesToExecute);
-            }
-            else if(this.currentProcessPCB1 != null && this.currentProcessPCB2 == null){
+            } else if (this.currentProcessPCB1 != null && this.currentProcessPCB2 == null) {
                 this.currentProcessPCB2 = this.getProcessByCore("Núcleo2");
-                if(this.currentProcessPCB2 != null) {
+                if (this.currentProcessPCB2 != null) {
                     this.currentProcessPCB2.getProcessStatus().setRegisterValue("Ejecutando");
                     this.currentProcessPCB2.getInitTime().setRegisterValue(Integer.toString(CPU.getCPU().getCPUCurrentTime()));
                 }
-            }
-            else if(this.currentProcessPCB1 == null && this.currentProcessPCB2 != null){
+            } else if (this.currentProcessPCB1 == null && this.currentProcessPCB2 != null) {
                 this.currentProcessPCB1 = this.getProcessByCore("Núcleo 1");
-                if(this.currentProcessPCB1 != null) {
+                if (this.currentProcessPCB1 != null) {
                     this.currentProcessPCB1.getProcessStatus().setRegisterValue("Ejecutando");
                     this.currentProcessPCB1.getInitTime().setRegisterValue(Integer.toString(CPU.getCPU().getCPUCurrentTime()));
                 }
             }
+        } else {
+            CPU.getCPU().setCPUIsExecutingProcesses();
         }
-        else CPU.getCPU().setCPUIsExecutingProcesses();
     }
-    
-    public String getZeros(int count){
+
+    public String getZeros(int count) {
         String zeros = "";
-        for(int i = 0; i < count; i++) zeros += "0";
+        for (int i = 0; i < count; i++) {
+            zeros += "0";
+        }
         return zeros;
     }
-    
-    public void executeCore1Instruction(){
-        if(this.currentProcessPCB1 != null){
-            if(!this.currentProcessPCB1.getProcessStatus().getRegisterValue().equals("En espera")){
-                if(this.currentInstructionPCB1RemainingTime == 1 && this.currentProcessPCB1.getProcessStatus().getRegisterValue().equals("Ejecutando")){
+
+    public void executeCore1Instruction() {
+        if (this.currentProcessPCB1 != null) {
+            if (!this.currentProcessPCB1.getProcessStatus().getRegisterValue().equals("En espera")) {
+                if (this.currentInstructionPCB1RemainingTime == 1 && this.currentProcessPCB1.getProcessStatus().getRegisterValue().equals("Ejecutando")) {
                     this.currentInstructionPCB1RemainingTime = 0;
                     String result = this.instructionManager.executeInstruction(currentProcessPCB1, CPU.getCPU().getCore1().getIRRegister().getRegisterValue());
-                    int PCIndex = Integer.parseInt(new MemoryManager().decodeAddress(this.currentProcessPCB1.getPC().getRegisterValue())[1]);
-                    int initIndex = Integer.parseInt(this.currentProcessPCB1.getInitProgramIndex().getRegisterValue());
-                    int programLength = Integer.parseInt(this.currentProcessPCB1.getProcessLength().getRegisterValue());
-                    if(PCIndex < (initIndex + programLength)){
-                        String prefix = this.currentProcessPCB1.getPC().getRegisterValue().split(" ")[0];
-                        this.currentProcessPCB1.getPC().setRegisterValue(prefix + " " + this.getZeros(4 - Integer.toString(PCIndex).length()) + Integer.toString(PCIndex + 1));
+                    if (result != "") {
+                        JOptionPane.showMessageDialog(this.view, result);
+                        this.currentProcessPCB1.getProcessStatus().setRegisterValue(result);
+                        this.currentProcessPCB1 = null;
+                    } else {
+                        int PCIndex = Integer.parseInt(new MemoryManager().decodeAddress(this.currentProcessPCB1.getPC().getRegisterValue())[1]);
+                        int initIndex = Integer.parseInt(this.currentProcessPCB1.getInitProgramIndex().getRegisterValue());
+                        int programLength = Integer.parseInt(this.currentProcessPCB1.getProcessLength().getRegisterValue());
+                        if (PCIndex < (initIndex + programLength)) {
+                            String prefix = this.currentProcessPCB1.getPC().getRegisterValue().split(" ")[0];
+                            this.currentProcessPCB1.getPC().setRegisterValue(prefix + " " + this.getZeros(4 - Integer.toString(PCIndex).length()) + Integer.toString(PCIndex + 1));
+                        } else {
+                            this.currentProcessPCB1.getProcessStatus().setRegisterValue("Finalizado");
+                            this.currentProcessPCB1 = null;
+                        }
                     }
-                    else{
-                       this.currentProcessPCB1.getProcessStatus().setRegisterValue("Finalizado");
-                       this.currentProcessPCB1 = null;
-                    }
-                }
-                else if(this.currentInstructionPCB1RemainingTime > 0 && this.currentProcessPCB1.getProcessStatus().getRegisterValue().equals("Ejecutando")){
+                } else if (this.currentInstructionPCB1RemainingTime > 0 && this.currentProcessPCB1.getProcessStatus().getRegisterValue().equals("Ejecutando")) {
                     this.currentInstructionPCB1RemainingTime -= 1;
                 }
-            }
-            else{
+            } else {
                 //Incluir manejo de E/S
             }
         }
     }
-    
-    public void executeCore2Instruction(){
-        if(this.currentProcessPCB2 != null){
-            if(!this.currentProcessPCB2.getProcessStatus().getRegisterValue().equals("En espera")){
-                if(this.currentInstructionPCB2RemainingTime == 1 && this.currentProcessPCB2.getProcessStatus().getRegisterValue().equals("Ejecutando")){
+
+    public void executeCore2Instruction() {
+        if (this.currentProcessPCB2 != null) {
+            if (!this.currentProcessPCB2.getProcessStatus().getRegisterValue().equals("En espera")) {
+                if (this.currentInstructionPCB2RemainingTime == 1 && this.currentProcessPCB2.getProcessStatus().getRegisterValue().equals("Ejecutando")) {
                     this.currentInstructionPCB2RemainingTime = 0;
                     String result = this.instructionManager.executeInstruction(currentProcessPCB2, CPU.getCPU().getCore2().getIRRegister().getRegisterValue());
-                    int PCIndex = Integer.parseInt(new MemoryManager().decodeAddress(this.currentProcessPCB2.getPC().getRegisterValue())[1]);
-                    int initIndex = Integer.parseInt(this.currentProcessPCB2.getInitProgramIndex().getRegisterValue());
-                    int programLength = Integer.parseInt(this.currentProcessPCB2.getProcessLength().getRegisterValue());
-                    if(PCIndex < (initIndex + programLength)){
-                        String prefix = this.currentProcessPCB2.getPC().getRegisterValue().split(" ")[0];
-                        this.currentProcessPCB2.getPC().setRegisterValue(prefix + " " + this.getZeros(4 - Integer.toString(PCIndex).length()) + Integer.toString(PCIndex + 1));
+                    if (result != "") {
+                        JOptionPane.showMessageDialog(this.view, result);
+                        this.currentProcessPCB2.getProcessStatus().setRegisterValue(result);
+                        this.currentProcessPCB2 = null;
+                    } else {
+                        int PCIndex = Integer.parseInt(new MemoryManager().decodeAddress(this.currentProcessPCB2.getPC().getRegisterValue())[1]);
+                        int initIndex = Integer.parseInt(this.currentProcessPCB2.getInitProgramIndex().getRegisterValue());
+                        int programLength = Integer.parseInt(this.currentProcessPCB2.getProcessLength().getRegisterValue());
+                        if (PCIndex < (initIndex + programLength)) {
+                            String prefix = this.currentProcessPCB2.getPC().getRegisterValue().split(" ")[0];
+                            this.currentProcessPCB2.getPC().setRegisterValue(prefix + " " + this.getZeros(4 - Integer.toString(PCIndex).length()) + Integer.toString(PCIndex + 1));
+                        } else {
+                            this.currentProcessPCB2.getProcessStatus().setRegisterValue("Finalizado");
+                            this.currentProcessPCB2 = null;
+                        }
                     }
-                    else{
-                       this.currentProcessPCB2.getProcessStatus().setRegisterValue("Finalizado");
-                       this.currentProcessPCB2 = null;
-                    }
-                }
-                else if(this.currentInstructionPCB2RemainingTime > 0 && this.currentProcessPCB2.getProcessStatus().getRegisterValue().equals("Ejecutando")){
+                } else if (this.currentInstructionPCB2RemainingTime > 0 && this.currentProcessPCB2.getProcessStatus().getRegisterValue().equals("Ejecutando")) {
                     this.currentInstructionPCB2RemainingTime -= 1;
                 }
-            }
-            else{
+            } else {
                 //Incluir manejo de E/S
             }
         }
     }
-    
-    public String getInstructionForIRRegister(PCB processPCB){
+
+    public String getInstructionForIRRegister(PCB processPCB) {
         String instruction = "";
         String[] instructionLocation = new MemoryManager().decodeAddress(processPCB.getPC().getRegisterValue());
         Memory memory = instructionLocation[0].equals("mainMemory") ? CPU.getCPU().getMainMemory() : CPU.getCPU().getSecondaryMemory();
         instruction = memory.getMemoryRegisters().get(Integer.parseInt(instructionLocation[1])).getRegisterValue();
         return instruction;
     }
-    
-    public void executeOneCPUTime(){
+
+    public void executeOneCPUTime() {
         this.setProcessesToExecute();
-        if(this.currentProcessPCB1 != null || this.currentProcessPCB2 != null){
+        if (this.currentProcessPCB1 != null || this.currentProcessPCB2 != null) {
             CPU.getCPU().setCPUCurrentTime();
             this.executeCore1Instruction();
             this.executeCore2Instruction();
             this.setCurrentExecutionVariables();
-        }
-        else{
+        } else {
             this.view.nextButton.setEnabled(false);
         }
     }
-    
+
     public void setCurrentExecutionVariables() {
         this.setCPUTimeLabel();
-        if(this.currentProcessPCB1 != null){    
+        if (this.currentProcessPCB1 != null) {
             this.setCore1LabelValues();
             this.setBCP1LabelValues(this.currentProcessPCB1);
             this.setBCPStackLabelValues(this.currentProcessPCB1.getStack(), this.view.stackBCP1);
-            if(this.currentInstructionPCB1RemainingTime == 0){
+            if (this.currentInstructionPCB1RemainingTime == 0) {
                 int weigth = this.instructionManager.getInstructionWeigth(CPU.getCPU().getCore1().getIRRegister().getRegisterValue().split(" ")[0]);
                 this.currentInstructionPCB1RemainingTime = weigth;
                 CPU.getCPU().getCore1().getIRRegister().setRegisterValue(this.getInstructionForIRRegister(this.currentProcessPCB1));
             }
         }
-        if(this.currentProcessPCB2 != null){
+        if (this.currentProcessPCB2 != null) {
             this.setCore2LabelValues();
             this.setBCP2LabelValues(this.currentProcessPCB2);
             this.setBCPStackLabelValues(this.currentProcessPCB2.getStack(), this.view.stackBCP2);
-            if(this.currentInstructionPCB2RemainingTime == 0){
+            if (this.currentInstructionPCB2RemainingTime == 0) {
                 int weigth = this.instructionManager.getInstructionWeigth(CPU.getCPU().getCore2().getIRRegister().getRegisterValue().split(" ")[0]);
                 this.currentInstructionPCB2RemainingTime = weigth;
                 CPU.getCPU().getCore2().getIRRegister().setRegisterValue(this.getInstructionForIRRegister(this.currentProcessPCB2));
             }
-            
+
         }
         new controller.TableController(view).setProcessesTable();
     }
