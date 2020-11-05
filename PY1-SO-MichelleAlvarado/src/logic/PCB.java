@@ -175,7 +175,7 @@ public class PCB {
             if(this.stack.get(i).getRegisterValue().equals("00000000")){
                 int x = i;
                 for(int j = 0; j < params.length; j++){
-                    this.stack.get(x).setRegisterValue(params[j]);
+                    if(params[j] != null) this.stack.get(x).setRegisterValue(params[j]);
                     x +=1;
                 }
                 break;
